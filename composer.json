@@ -1,0 +1,60 @@
+{
+	"name": "laravel/laravel",
+	"description": "The Laravel Framework.",
+	"keywords": ["framework", "laravel"],
+	"license": "MIT",
+	"require": {
+        "cartalyst/sentry": "2.1.*",
+        "nesbot/Carbon": "*",
+        "hugofirth/mailchimp": "2.0.*",
+        "mews/captcha": "dev-master",
+        "tinymce/tinymce" :"dev-master",
+        "pragmarx/tracker": "0.6.*",
+        "geoip/geoip":"~1.14",
+        "laracasts/utilities": "~1.0",
+        "laracasts/validation": "~1.0",
+        "laracasts/commander": "~1.0",
+        "miladr/jalali": "dev-master",
+        "laracasts/presenter": "0.1.*",
+        "doctrine/dbal": "2.5.*@dev"
+    },
+    "require-dev": {
+        "doctrine/dbal": "2.5.*@dev",
+        "phpspec/phpspec": "2.1.*@dev",
+        "benconstable/phpspec-laravel": "1.*@dev",
+        "phpunit/phpunit": "4.1.3",
+        "way/laravel-test-helpers": "dev-master",
+        "mockery/mockery": "*",
+        "barryvdh/laravel-debugbar": "1.6.*@dev",
+        "barryvdh/laravel-ide-helper": "1.*"
+    },
+	"autoload": {
+		"classmap": [
+			"app/commands",
+			"app/database/migrations",
+			"app/database/seeds",
+			"app/tests/TestCase.php"
+		],
+        "psr-4" : {
+            "Pardisan\\" : "app/Pardisan",
+            "Controllers\\" : "app/Controllers"
+        }
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-update-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-create-project-cmd": [
+			"php artisan key:generate"
+		]
+	},
+	"config": {
+		"preferred-install": "dist"
+	},
+	"minimum-stability": "stable"
+}
