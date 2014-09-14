@@ -11,9 +11,4 @@
 |
 */
 
-Route::get('/', function()
-{
-    $user = new \Pardisan\Models\User();
-
-    return 'hello';
-});
+Route::get('/','Controllers\HomeController@showWelcome');

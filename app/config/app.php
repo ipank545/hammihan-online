@@ -122,13 +122,14 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-        // Package Service Providers
-//        'Barryvdh\Debugbar\ServiceProvider',
-//        'Cartalyst\Sentry\SentryServiceProvider',
-//        'Mews\Captcha\CaptchaServiceProvider',
-//        'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
+         //Package Service Providers
+        'Barryvdh\Debugbar\ServiceProvider',
+        'Cartalyst\Sentry\SentryServiceProvider',
+        'Mews\Captcha\CaptchaServiceProvider',
+        'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
 
-        // Pardisan Service Providers
+         //Pardisan Service Providers
+        'Pardisan\ServiceProviders\SettingsServiceProvider'
 
 	),
 
@@ -197,13 +198,19 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
-        // Package facades
-//        'Debugbar'        => 'Barryvdh\Debugbar\Facade',
-//        'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-//        'Captcha'         => 'Mews\Captcha\Facades\Captcha',
-        // Pardisan Facades
+         //Package facades
+        'Debugbar'        => 'Barryvdh\Debugbar\Facade',
+        'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+        'Captcha'         => 'Mews\Captcha\Facades\Captcha',
+
+        //Pardisan Facades
 
 
 	),
+
+    'available_languages'   =>  [
+        'en',
+        'fa'
+    ]
 
 );
