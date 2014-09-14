@@ -14,5 +14,5 @@ app/storage
 /app/storage
 node_modules/
 node_modules
-app/local
-app/local/
+app/config/local
+app/config/local/
