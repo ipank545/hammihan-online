@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\View;
 
 class HomeController extends BaseController {
 
+
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Home Controller

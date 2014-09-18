@@ -11,4 +11,7 @@
 |
 */
 
-Route::get('/','Controllers\HomeController@showWelcome');
+Route::group (['namespace' => 'Controllers'],function (){
+    Route::get('/log/{data}','LogController@getLog');
+    Route::get('/logs/{id}','LogController@findLog');
+});

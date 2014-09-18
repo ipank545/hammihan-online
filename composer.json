@@ -9,7 +9,6 @@
         "hugofirth/mailchimp": "2.0.*",
         "mews/captcha": "dev-master",
         "tinymce/tinymce" :"dev-master",
-        "pragmarx/tracker": "0.6.*",
         "geoip/geoip":"~1.14",
         "laracasts/utilities": "~1.0",
         "laracasts/validation": "~1.0",

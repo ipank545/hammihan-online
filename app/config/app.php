@@ -123,13 +123,13 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
          //Package Service Providers
-        'Barryvdh\Debugbar\ServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
         'Mews\Captcha\CaptchaServiceProvider',
-        'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
+        'Laracasts\Commander\CommanderServiceProvider',
 
          //Pardisan Service Providers
-        'Pardisan\ServiceProviders\SettingsServiceProvider'
+        'Pardisan\ServiceProviders\SettingsServiceProvider',
+        'Pardisan\ServiceProviders\RepositoryServiceProvider'
 
 	),
 
