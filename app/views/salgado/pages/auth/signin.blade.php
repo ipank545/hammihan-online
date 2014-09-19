@@ -36,5 +36,7 @@
 </div>
 @stop
 
-@section('footer') @stop
+@section('footer')
+    <p class="text-center" style="color:#fff">سامانه خبری پردیسان تمامی حقوق محفوظ میباشد</p>
+@stop
 @section('header') @stop
