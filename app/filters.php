@@ -43,7 +43,10 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::guest('admin/login')->with(
+                'error_message',
+                trans('messages.auth.please_signin')
+            );
 		}
 	}
 });
@@ -67,7 +70,10 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Auth::check()) return Redirect::to('admin/dash')->with(
+        'success_message',
+        trans('messages.auth.already_signedin')
+    );
 });
 
 /*

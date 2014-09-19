@@ -123,14 +123,15 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
          //Package Service Providers
-        'Cartalyst\Sentry\SentryServiceProvider',
-        'Mews\Captcha\CaptchaServiceProvider',
+        'Zizaco\Entrust\EntrustServiceProvider',
         'Laracasts\Commander\CommanderServiceProvider',
+        'Laracasts\Validation\ValidationServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
 
          //Pardisan Service Providers
         'Pardisan\ServiceProviders\SettingsServiceProvider',
-        'Pardisan\ServiceProviders\RepositoryServiceProvider'
-
+        'Pardisan\ServiceProviders\RepositoryServiceProvider',
+        'Pardisan\ServiceProviders\ArtisanCommandsServiceProvider'
 	),
 
 	/*
@@ -200,8 +201,7 @@ return array(
 
          //Package facades
         'Debugbar'        => 'Barryvdh\Debugbar\Facade',
-        'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-        'Captcha'         => 'Mews\Captcha\Facades\Captcha',
+        'Entrust'         => 'Zizaco\Entrust\EntrustFacade',
 
         //Pardisan Facades
 

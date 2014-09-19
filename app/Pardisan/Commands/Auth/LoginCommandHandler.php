@@ -1,11 +1,26 @@
 <?php namespace Pardisan\Commands\Auth; 
 
+use Illuminate\Auth\AuthManager;
 use Laracasts\Commander\CommandHandler;
 use Pardisan\Commands\AbstractCommandHandler;
 use Pardisan\Commands\Auth\Exceptions\InvalidCredentialsException;
 
-class LoginCommandHandler extends  AbstractCommandHandler implements CommandHandler
+class LoginCommandHandler extends AbstractCommandHandler implements CommandHandler
 {
+
+    /**
+     * @var AuthManager
+     */
+    protected $authManager;
+
+    /**
+     * @param AuthManager $authManager
+     */
+    public function __construct(AuthManager $authManager)
+    {
+        $this->authManager = $authManager;
+    }
+
     /**
      * Handle the command
      *
@@ -36,7 +51,7 @@ class LoginCommandHandler extends  AbstractCommandHandler implements CommandHand
     {
         return [
             'email',
-            'username',
+            'user_name',
             'id'
         ];
     }

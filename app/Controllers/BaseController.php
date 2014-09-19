@@ -90,8 +90,21 @@ class BaseController extends \Controller {
      * @param $url
      * @return mixed
      */
-    protected function redirectTo($url){
+    protected function redirectTo($url)
+    {
         return Redirect::to($url);
+    }
+
+    /**
+     * Create view
+     *
+     * @param $bladeablePath
+     * @param $data
+     * @return mixed
+     */
+    protected function view($bladeablePath, $data = [])
+    {
+        return View::make($bladeablePath, $data);
     }
 
 }

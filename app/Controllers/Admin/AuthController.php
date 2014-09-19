@@ -1,6 +1,7 @@
 <?php namespace Controllers\Admin; 
 
 use Controllers\BaseController;
+use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use Illuminate\Translation\Translator;
 use Laracasts\Validation\FormValidationException;
@@ -46,7 +47,7 @@ class AuthController extends BaseController
      */
     public function getLogin()
     {
-        return "Login page";
+        return $this->view('salgado.pages.auth.signin');
     }
 
     /**
@@ -95,9 +96,9 @@ class AuthController extends BaseController
     {
         $this->auth->logout();
 
-        return $this->redirectBack()->with(
+        return $this->redirectRoute('admin.auth.get_login')->with(
             'success_message',
-            $this->trans->get('auth.success_message')
+            $this->trans->get('messages.auth.success_logout')
         );
     }
 } 

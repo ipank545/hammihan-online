@@ -11,7 +11,17 @@
 |
 */
 
-Route::group (['namespace' => 'Controllers'],function (){
-    Route::get('/log/{data}','LogController@getLog');
-    Route::get('/logs/{id}','LogController@findLog');
+Route::when('admin/*', 'csrf', ['post']);
+
+Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(){
+
+    Route::group(['before' => 'auth'], function(){
+        Route::get('/dash',                                 ['uses' => 'DashboardController@index',                                         'as' => 'admin.dash.index']);
+        Route::get('/logout',                               ['uses' => 'AuthController@getLogout',                                          'as' => 'admin.auth.logout']);
+    });
+
+    Route::group(['before' => 'guest'], function(){
+        Route::post('/login',                               ['uses' => 'AuthController@postLogin',                                          'as' => 'admin.auth.post_login']);
+        Route::get('/login',                                ['uses' => 'AuthController@getLogin',                                           'as' => 'admin.auth.get_login']);
+    });
 });

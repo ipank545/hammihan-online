@@ -2,9 +2,9 @@
 
 use Laracasts\Validation\FormValidator;
 
-class LoginCommandValidator extends FormValidator
+class LoginValidator extends FormValidator
 {
-    public $rules = [
+    protected  $rules = [
         'identifier'    =>  'required',
         'password'      =>  'required'
     ];

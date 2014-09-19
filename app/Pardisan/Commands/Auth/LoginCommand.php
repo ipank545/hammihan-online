@@ -6,6 +6,11 @@ class LoginCommand
     public $password;
     public $remember;
 
+    /**
+     * @param $identifier
+     * @param $password
+     * @param $remember
+     */
     public function __construct(
         $identifier,
         $password,

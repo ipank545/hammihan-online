@@ -1,15 +1,7 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: SAM
- * Date: 9/17/14
- * Time: 3:38 PM
- * To change this template use File | Settings | File Templates.
- */
+<?php namespace Pardisan\Repositories\Exceptions;
 
-namespace Pardisan\Repositories\Exceptions;
+use Pardisan\Exceptions\PardisanException;
 
-
-class RepositoryException extends \Exception {
+class RepositoryException extends PardisanException {
 
 }
