@@ -20,4 +20,12 @@ interface RoleRepositoryInterface
      * @return mixed
      */
     public function getAll();
+
+    /**
+     * Delete by multiple ids
+     *
+     * @param $deleteables
+     * @return int
+     */
+    public function bulkDelete(array $deleteables);
 }

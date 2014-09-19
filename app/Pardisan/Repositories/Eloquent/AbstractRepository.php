@@ -242,4 +242,17 @@ abstract class AbstractRepository {
     {
         return $q = $end ? $q->where($for, '<', $end) : $q;
     }
+
+    /**
+     * Delete by multiple ids
+     *
+     * @param $deleteables
+     * @return int
+     */
+    public function bulkDelete(array $deleteables)
+    {
+        if (! empty($deleteables)){
+            return $this->model->newInstance()->whereIn('id', $deleteables)->delete();
+        }
+    }
 }

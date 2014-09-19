@@ -131,7 +131,8 @@ return array(
          //Pardisan Service Providers
         'Pardisan\ServiceProviders\SettingsServiceProvider',
         'Pardisan\ServiceProviders\RepositoryServiceProvider',
-        'Pardisan\ServiceProviders\ArtisanCommandsServiceProvider'
+        'Pardisan\ServiceProviders\ArtisanCommandsServiceProvider',
+        'Pardisan\ServiceProviders\ValidationServiceProvider'
 	),
 
 	/*
