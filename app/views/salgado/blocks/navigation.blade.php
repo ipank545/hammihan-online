@@ -29,7 +29,7 @@
                     <button type="button" style="border-radius:0px;" class="btn btn-default profile-btn" data-toggle="dropdown">
                        <span class="glyphicon glyphicon-user"></span> {{$currentUser->identifier()}}
                     </button>
-                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span> خروج</button>
+                    <a href="{{URL::route('admin.auth.logout')}}" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span> خروج</a>
                 </div>
             </div>
             @endif

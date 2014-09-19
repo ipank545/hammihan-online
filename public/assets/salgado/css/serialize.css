@@ -276,7 +276,10 @@ img.dash-menu-img {
   opacity: 0.5;
 }
 body.plan-page,body.auth-page , body.auth-page{
-  /*background-color:#5e2d79;*/
+  background-image : url('../img/header.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .price-table-column .content-box {
   padding:0;

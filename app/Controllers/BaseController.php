@@ -81,7 +81,7 @@ class BaseController extends \Controller {
      */
     protected function redirectIntended()
     {
-        return Redirect::intended('dashboard.index');
+        return Redirect::intended('admin/dash');
     }
 
     /**

@@ -37,3 +37,4 @@
 @stop
 
 @section('footer') @stop
+@section('header') @stop

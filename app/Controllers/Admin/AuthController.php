@@ -3,6 +3,7 @@
 use Controllers\BaseController;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Translation\Translator;
 use Laracasts\Validation\FormValidationException;
 use Pardisan\Commands\Auth\Exceptions\InvalidCredentialsException;
@@ -69,7 +70,10 @@ class AuthController extends BaseController
 
             return $this->redirectIntended()->with(
                 'success_message',
-                $this->trans->get('messages.auth.success_login')
+                $this->trans->get(
+                    'messages.auth.success_login',
+                    ['user' => Auth::user()->identifier()]
+                )
             );
 
         }catch(FormValidationException $e){

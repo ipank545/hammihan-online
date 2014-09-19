@@ -1,5 +1,6 @@
 <?php namespace Pardisan\Repositories\Eloquent; 
 
+use Illuminate\Database\Eloquent\Collection;
 use Pardisan\Models\Role;
 use Pardisan\Models\User;
 use Pardisan\Repositories\RoleRepositoryInterface;
@@ -25,5 +26,15 @@ class RoleRepository extends AbstractRepository implements RoleRepositoryInterfa
     {
         $user->attachRole($role);
         return $user;
+    }
+
+    /**
+     * Get all available roles
+     *
+     * @return Collection
+     */
+    public function getAll()
+    {
+        return $this->model->newInstance()->all();
     }
 }

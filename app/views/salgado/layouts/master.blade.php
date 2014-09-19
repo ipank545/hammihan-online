@@ -22,7 +22,15 @@
             @section('navigation')
                 @include('salgado.blocks.navigation')
             @show
-            @yield('header')
+            @section('header')
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @include('salgado.blocks._messages')
+                        </div>
+                    </div>
+                </div>
+            @show
             @yield('content')
             @yield('sidebar')
             @yield('pre_footer')

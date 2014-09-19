@@ -13,4 +13,11 @@ interface RoleRepositoryInterface
      * @return mixed
      */
     public function addRoleToUser(User $user, Role $role);
+
+    /**
+     * Get all available roles
+     *
+     * @return mixed
+     */
+    public function getAll();
 }

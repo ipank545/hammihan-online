@@ -35,7 +35,7 @@
 					</ul>
 				</div>
 			</div>
-			<dic class="col-lg-6 col-sm-12 col-md-6">
+			<div class="col-lg-6 col-sm-12 col-md-6">
                 <div class="content-box">
                     <h4 class="text-center">داشبورد سیستم</h4>
                     <ul class="nav nav-list dash-list">
@@ -108,10 +108,6 @@
                 var elemHeight = $(elem).height();
                 height = elemHeight > height ? elemHeight : height;
             });
-            /**elem.animate({
-                height : height
-            },500);
-            console.log(height);*/
             elem.height(height);
 	    });
 	</script>
