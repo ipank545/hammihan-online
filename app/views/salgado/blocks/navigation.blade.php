@@ -24,19 +24,12 @@
                 <a href="{{URL::to('auth/signin')}}" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-user"></i> ورود</a>
             </div>
             @else
-            <div class="navbar-left call-to-action btn-group">
+            <div class="navbar-left call-to-action btn-group" style="margin-top: 28px;">
                 <div class="btn-group">
-                    <button type="button" style="border-radius:3px;" class="btn btn-link profile  dropdown-toggle" data-toggle="dropdown">
-                        <img class="dash-menu-img img-circle" src="{{asset('files/images/user_default_profile/' . rand(1,7) . '.gif')}}">
-                       {{Auth::user()->username}} <span class="glyphicon glyphicon-chevron-down"></span>
+                    <button type="button" style="border-radius:0px;" class="btn btn-default profile-btn" data-toggle="dropdown">
+                       <span class="glyphicon glyphicon-user"></span> {{$currentUser->identifier()}}
                     </button>
-                    <ul class="dropdown-menu dash-menu" role="menu">
-                        <li><a href="#"><span class="glyphicon glyphicon-dashboard"> </span> داشبورد</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-edit"> </span> ویرایش پروفایل</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-star"> </span> سریال های من</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-off"> </span> خروج</a></li>
-                    </ul>
+                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span> خروج</button>
                 </div>
             </div>
             @endif

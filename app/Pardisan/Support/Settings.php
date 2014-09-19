@@ -153,6 +153,7 @@ class Settings {
         );
 
         $this->shareDates();
+        $this->shareUser();
     }
 
     /**
@@ -172,6 +173,19 @@ class Settings {
         $this->view->share(
             'currentGregorianDate',
             $nowGregorian
+        );
+    }
+
+    /**
+     * Share current user in view
+     *
+     * @return null || User
+     */
+    private function shareUser()
+    {
+        $this->view->share(
+            'currentUser',
+            $this->app['auth']->check() ? $this->app['auth']->user() : null
         );
     }
 } 

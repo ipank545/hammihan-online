@@ -28,7 +28,7 @@
 					</div>
 					<button type="submit" style="margin-bottom:10px" class="btn btn-primary btn-block">{{trans('auth.signin')}}</button>
 					<!--a href="#" style="margin-bottom:10px;" class="btn btn-block btn-default">ورود با حساب گوگل</a-->
-					<a href="#" class="btn btn-link btn-block btn-xs">{{trans('auth.forgot_password?')}}</a>
+					<!--a href="#" class="btn btn-link btn-block btn-xs">{{trans('auth.forgot_password?')}}</a-->
 				{{Form::close()}}
 			</div>
 		</div>

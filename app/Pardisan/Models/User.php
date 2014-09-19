@@ -36,4 +36,15 @@ class User extends Eloquent  implements
 	 */
 	protected $hidden = array('password', 'remember_token', 'persist_code');
 
+    /**
+     * User's identifier
+     *
+     * @return string
+     */
+    public function identifier()
+    {
+        if (! is_null($this->name)) return $this->name;
+        return $this->user_name;
+    }
+
 }

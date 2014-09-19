@@ -18,6 +18,7 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
     Route::group(['before' => 'auth'], function(){
         Route::get('/dash',                                 ['uses' => 'DashboardController@index',                                         'as' => 'admin.dash.index']);
         Route::get('/logout',                               ['uses' => 'AuthController@getLogout',                                          'as' => 'admin.auth.logout']);
+        Route::get('/me',                                   ['uses' => 'UserController@meEdit',                                             'as' => 'admin.profile']);
     });
 
     Route::group(['before' => 'guest'], function(){

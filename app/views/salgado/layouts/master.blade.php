@@ -2,7 +2,7 @@
 <html lang="fa" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
     <head>
         @section('title')
-                <title>{{ $title_prefix or 'سریالیزه | '}}{{ $title or "دانلود فیلم و سریال"}}</title>
+                <title>{{$title or trans("settings.{$defaultTitle}")}}</title>
         @show
 
         @section('meta')
