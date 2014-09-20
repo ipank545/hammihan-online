@@ -1,6 +1,5 @@
-<?php
+<?php namespace Pardisan\Repositories;
 
-namespace Pardisan\Repositories;
 
 
 interface LogRepositoryInterface {

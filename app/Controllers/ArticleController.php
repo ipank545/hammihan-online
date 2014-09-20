@@ -6,4 +6,23 @@ use Laracasts\Validation\FormValidationException;
 
 class ArticleController extends BaseController {
 
+    public function getArticle(
+        $firstTitle,
+        $secondTitle,
+        $importantTitle,
+        $summary,
+        $body,
+        $publisheDate,
+        $status_id,
+        $author,
+        $userId
+      ){
+
+        try {
+                // some execute
+        } catch (FormValidationException $e) {
+
+        }
+
+    }
 } 
