@@ -6,7 +6,7 @@ use Laracasts\Validation\FormValidationException;
 
 class ArticleController extends BaseController {
 
-    public function getArticle(
+    public function store(
         $firstTitle,
         $secondTitle,
         $importantTitle,
