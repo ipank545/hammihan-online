@@ -2,7 +2,6 @@
 
 use Carbon\Carbon;
 use Illuminate\Config\Repository;
-use Illuminate\Events\Dispatcher;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;

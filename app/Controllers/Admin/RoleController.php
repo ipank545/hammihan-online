@@ -43,7 +43,11 @@ class RoleController extends BaseController
 
         try {
 
-            $count = $this->execute('Pardisan\Commands\Role\BulkDeleteCommand', ['deleteables' => $items]);
+            $count = $this->execute(
+                'Pardisan\Commands\Role\BulkDeleteCommand',
+                ['deleteables' => $items]
+            );
+
             return $this->redirectRoute('admin.roles.index')->with(
                 'success_message',
                 $this->lang->get(
