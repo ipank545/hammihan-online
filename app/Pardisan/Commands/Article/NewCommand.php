@@ -1,17 +1,17 @@
 <?php Pardisan\Commands\Article;
 
-class NewArticleCommand {
+class NewCommand {
 
-    public $firstTitle;
-    public $secondTitle;
-    public $importantTitle;
+    public $first_title;
+    public $second_title;
+    public $important_title;
     public $summary;
     public $body;
-    public $publisheDate;
+    public $publish_date;
     public $status_id;
     public $author;
-    public $userId;
-    // how about slug_url???
+    public $user_id;
+
 
     public function __construct(
         $firstTitle,
@@ -19,20 +19,20 @@ class NewArticleCommand {
         $importantTitle,
         $summary,
         $body,
-        $publisheDate,
+        $publishDate,
         $status_id,
         $author,
         $userId
     ){
-        $this->firstTitle = $firstTitle;
-        $this->secondTitle = $secondTitle;
-        $this->importantTitle = $importantTitle;
+        $this->$first_title = $firstTitle;
+        $this->$second_title = $secondTitle;
+        $this->$important_title = $importantTitle;
         $this->summary = $summary;
         $this->body = $body;
-        $this->publisheDate = $publisheDate;
+        $this->$publish_date = $publishDate;
         $this->status_id = $status_id;
         $this->author = $author;
-        $this->userId = $userId;
+        $this->$user_id = $userId;
 
     }
 

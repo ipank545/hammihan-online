@@ -1,17 +1,22 @@
 <?php namespace Pardisan\Commands\Article;
 
-
 use Laracasts\Commander\CommandHandler;
 use Pardisan\Commands\AbstractCommandHandler;
 use Pardisan\Repositories\Exceptions\ArticleRepositoryInterface;
 
-class ArticleCommandHandler implements CommandHandler {
+class ArticleCommandHandler extends AbstractCommandHandler implements CommandHandler {
 
-    protected $article;
+    /**
+     * @var ArticleRepositoryInterface
+     */
+    protected $articleRepo;
 
+    /**
+     * @param ArticleRepositoryInterface $article
+     */
     public function __construct(ArticleRepositoryInterface $article){
 
-        $this->article = $article;
+        $this->articleRepo = $article;
     }
     /**
      * Handle the command
@@ -21,6 +26,7 @@ class ArticleCommandHandler implements CommandHandler {
      */
     public function handle($command)
     {
-        return $this->article->create(get_object_vars($command));
+        $command->url_slug = $command->id;
+        return $this->articleRepo->createRaw(get_object_vars($command));
     }
 }
