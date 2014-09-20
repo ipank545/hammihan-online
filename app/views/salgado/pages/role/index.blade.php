@@ -39,8 +39,7 @@
                                                 <td>{{ trans("roles.{$role->name}") }}</td>
                                                 <td>{{ $role->convertToPersian('created_at')}}</td>
                                                 <td style="text-align: left">
-                                                    <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></a>
-                                                    <a href="#" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+                                                    @include('salgado.pages.role.partials._index_operation')
                                                 </td>
                                             </tr>
                                         @endforeach

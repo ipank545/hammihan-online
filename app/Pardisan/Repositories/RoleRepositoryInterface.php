@@ -28,4 +28,13 @@ interface RoleRepositoryInterface
      * @return int
      */
     public function bulkDelete(array $deleteables);
+
+    /**
+     * Update a role repo by id
+     *
+     * @param $id
+     * @param array $data
+     * @return mixed
+     */
+    public function updateById($id, array $data);
 }
