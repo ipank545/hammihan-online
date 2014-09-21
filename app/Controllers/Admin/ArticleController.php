@@ -1,14 +1,15 @@
-+<?php namespace Controllers\Admin;
+<?php namespace Controllers\Admin;
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Translation\Translator;
+use Laracasts\Commander\CommanderTrait;
 use Laracasts\Validation\FormValidationException;
 
 class ArticleController extends BaseController {
 
-    /**
+     /**
      * @var Request
      */
     protected $request;
@@ -93,15 +94,32 @@ class ArticleController extends BaseController {
 
         try {
 
-            $update_article = $this->execute('Pardisan\Commands\Article\EditCommand', $update_input);
+            $update_article = $this->execute('Pardisan\Commands\Article\EditCommand', ['id' => $id, 'update_input' => $update_input]);
 
             return $this->redirectRoute('admin.articles.index')->with(
                 'success_message',
-                $this->lang->get('messages.articles.success_store', ['article_id' => $update_article->id])
+                $this->lang->get('messages.articles.success_update', ['article_id' => $update_article->id])
             );
         } catch (FormValidationException $e) {
 
             return $this->redirectBack()->withErrors($e->getErrors())->withInput();
+        }
+    }
+
+    public function delete($id)
+    {
+
+        try {
+
+            $this->execute('Pardisan\Commands\Article\DeleteCommand', ['id' => $id]);
+
+            return $this->redirectRoute('admin.articles.index')->with(
+                'success_message',
+                $this->lang->get('messages.articles.success_delete')   //I'm not sure about messages
+            );
+        } catch (FormValidationException $e) {
+
+            return $this->redirectBack()->withErrors($e->getErrors());
         }
     }
 } 

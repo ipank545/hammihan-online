@@ -4,14 +4,14 @@ use Laracasts\Commander\CommandHandler;
 use Pardisan\Commands\AbstractCommandHandler;
 use Pardisan\Repositories\Exceptions\ArticleRepositoryInterface;
 
-class EditCommandHandler extends AbstractCommandHandler implements CommandHandler {
+class DeleteCommandHandler extends AbstractCommandHandler implements CommandHandler {
 
     protected $articleRepo;
 
     public function __construct(ArticleRepositoryInterface $article){
 
         $this->articleRepo = $article;
-     }
+    }
     /**
      * Handle the command
      *
@@ -20,6 +20,6 @@ class EditCommandHandler extends AbstractCommandHandler implements CommandHandle
      */
     public function handle($command)
     {
-        $this->articleRepo->editById($command->id,$command);
+        $this->articleRepo->deleteById($command->id);
     }
 }

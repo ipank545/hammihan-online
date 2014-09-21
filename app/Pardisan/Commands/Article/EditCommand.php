@@ -25,15 +25,15 @@ class EditCommand {
         $author,
         $userId
     ){
-        $this->$first_title = $firstTitle;
-        $this->$second_title = $secondTitle;
-        $this->$important_title = $importantTitle;
+        $this->first_title = $firstTitle;
+        $this->second_title = $secondTitle;
+        $this->important_title = $importantTitle;
         $this->summary = $summary;
         $this->body = $body;
-        $this->$publish_date = $publishDate;
+        $this->publish_date = $publishDate;
         $this->status_id = $status_id;
         $this->author = $author;
-        $this->$user_id = $userId;
+        $this->user_id = $userId;
 
     }
 
