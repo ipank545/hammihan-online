@@ -13,7 +13,8 @@
         "laracasts/commander": "1.3.*",
         "miladr/jalali": "dev-master",
         "laracasts/presenter": "0.1.*",
-        "doctrine/dbal": "2.5.*@dev"
+        "doctrine/dbal": "2.5.*@dev",
+        "bigsinoos/j-eloquent" : "dev-master"
     },
     "require-dev": {
         "doctrine/dbal": "2.5.*@dev",

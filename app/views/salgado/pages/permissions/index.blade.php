@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <hr>
-                @if(! $permissions->isEmpty() AND !$roles->isEmpty())
+                @if(! $permissions->isEmpty() AND ! $roles->isEmpty())
                     <div class="table-responsive">
                         <table class="table table-hover table-striped">
                             <thead>

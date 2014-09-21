@@ -116,7 +116,7 @@ class RoleController extends BaseController
         try {
 
             $created = $this->execute(
-                'Pardisan\Commands\Role\StoreCommand',
+                'Pardisan\Commands\Role\NewCommand',
                 $input
             );
 
