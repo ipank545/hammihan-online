@@ -1,6 +1,7 @@
 <?php namespace Pardisan\Repositories\Eloquent; 
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\QueryException;
 use Pardisan\Models\Role;
 use Pardisan\Models\User;
 use Pardisan\Repositories\RoleRepositoryInterface;
@@ -36,5 +37,26 @@ class RoleRepository extends AbstractRepository implements RoleRepositoryInterfa
     public function getAll()
     {
         return $this->model->newInstance()->all();
+    }
+
+    /**
+     * Update a role repo by id
+     *
+     * @param $id
+     * @param array $data
+     * @throws UnableToUpdateException
+     * @throws \Pardisan\Repositories\Exceptions\NotFoundException
+     * @return mixed
+     */
+    public function updateById($id, array $data)
+    {
+        try {
+            $updateable = $this->findById($id);
+            $updateable->name = ! empty($data['name']) ? $data['name'] : $updateable->name;
+            $updateable->save();
+            return $updateable;
+        }catch (QueryException $e){
+            throw new UnableToUpdateException($e->getMessage());
+        }
     }
 }

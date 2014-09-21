@@ -2,7 +2,6 @@
 
 use Carbon\Carbon;
 use Illuminate\Config\Repository;
-use Illuminate\Events\Dispatcher;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
@@ -152,6 +151,7 @@ class Settings {
             $this->lang->get('default_admin_description')
         );
 
+        $this->shareTitle();
         $this->shareDates();
         $this->shareUser();
     }
@@ -187,5 +187,16 @@ class Settings {
             'currentUser',
             $this->app['auth']->check() ? $this->app['auth']->user() : null
         );
+    }
+
+    private function shareTitle()
+    {
+        $langKey = "titles.{$this->router->currentRouteName()}";
+        if ($this->lang->has($langKey)){
+            $this->view->share(
+                'title',
+                $this->lang->get($langKey)
+            );
+        }
     }
 } 

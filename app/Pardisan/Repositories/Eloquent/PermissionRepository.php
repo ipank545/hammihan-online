@@ -12,4 +12,15 @@ class PermissionRepository extends AbstractRepository implements PermissionRepos
     {
         $this->model = $model;
     }
-} 
+
+    /**
+     * Get all permissions with their active roles
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function getPermissionsWithRoles()
+    {
+        return $this->model->newInstance()->with('roles')->get();
+
+    }
+}

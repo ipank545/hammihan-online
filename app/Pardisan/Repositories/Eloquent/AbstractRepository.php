@@ -1,5 +1,6 @@
 <?php namespace Pardisan\Repositories\Eloquent;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
 use Pardisan\Repositories\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Model;
@@ -52,7 +53,6 @@ abstract class AbstractRepository {
         try {
             $model = $this->model->where($property,'=',$value)->first();
         }catch (QueryException $e){
-            dd($e->getMessage());
             throw new RepositoryException($e->getMessage());
         }
         if (is_null($model))
