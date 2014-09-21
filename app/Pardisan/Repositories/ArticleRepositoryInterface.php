@@ -6,13 +6,13 @@ interface ArticleRepositoryInterface {
 
     public function createRaw(array $data);
 
-    /*public function edit($id);
+    public function edit($id);
 
-    public function delete($id);
+    /* public function delete($id);
 
-    public function showById($id);
+     public function showById($id);
 
-    public function showAll();*/
+     public function showAll();*/
 
 
 

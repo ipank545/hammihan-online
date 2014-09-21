@@ -1,4 +1,4 @@
-<?php namespace Controllers\Admin;
++<?php namespace Controllers\Admin;
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
@@ -74,5 +74,34 @@ class ArticleController extends BaseController {
 
         }
 
+    }
+
+    public function edit($id)
+    {
+        $update_input = $this->request->only(
+            'first_title',
+            'second_title',
+            'important_title',
+            'summary',
+            'body',
+            'publish_date',
+            'status_id',
+            'author'
+        );
+
+        $update_input['user_id'] = $this->auth->user()->id;
+
+        try {
+
+            $update_article = $this->execute('Pardisan\Commands\Article\EditCommand', $update_input);
+
+            return $this->redirectRoute('admin.articles.index')->with(
+                'success_message',
+                $this->lang->get('messages.articles.success_store', ['article_id' => $update_article->id])
+            );
+        } catch (FormValidationException $e) {
+
+            return $this->redirectBack()->withErrors($e->getErrors())->withInput();
+        }
     }
 } 
