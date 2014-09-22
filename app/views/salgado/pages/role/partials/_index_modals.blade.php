@@ -10,8 +10,10 @@
                 </h4>
             </div>
             <div class="modal-body" style="min-height: 200px;">
-                <div class="spinner-wrapper">
-                    <div class="spinner"></div>
+                <div class="row spinner-wrapper">
+                    <div class="col-lg-12">
+                            <div class="spinner"></div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
