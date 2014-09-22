@@ -1,6 +1,7 @@
 <?php Pardisan\Commands\Article;
 
-class NewCommand {
+
+class EditCommand {
 
     public $first_title;
     public $second_title;
@@ -19,25 +20,21 @@ class NewCommand {
         $importantTitle,
         $summary,
         $body,
-        $publishDate,   // changable??
+        $publishDate,
         $status_id,
         $author,
         $userId
     ){
-        $this->$first_title = $firstTitle;
-        $this->$second_title = $secondTitle;
-        $this->$important_title = $importantTitle;
+        $this->first_title = $firstTitle;
+        $this->second_title = $secondTitle;
+        $this->important_title = $importantTitle;
         $this->summary = $summary;
         $this->body = $body;
-        $this->$publish_date = $publishDate;
+        $this->publish_date = $publishDate;
         $this->status_id = $status_id;
         $this->author = $author;
-        $this->$user_id = $userId;
+        $this->user_id = $userId;
 
     }
-
-
-
-
 
 } 
