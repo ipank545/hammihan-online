@@ -2,13 +2,10 @@
 
 use Controllers\BaseController;
 use Illuminate\Http\Request;
-use Laracasts\Commander\CommanderTrait;
 use Laracasts\Validation\FormValidationException;
 use Pardisan\Repositories\Exceptions\RepositoryException;
 
 class RoleController extends BaseController {
-
-    use CommanderTrait;
 
     /**
      * @var Request
@@ -29,7 +26,6 @@ class RoleController extends BaseController {
      */
     public function store()
     {
-        sleep(2);
         $input = $this->request->only('name');
 
         try {

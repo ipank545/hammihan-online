@@ -19,3 +19,17 @@
         return o;
     };
 })(jQuery);
+
+$(document).ready(function(){
+    $("form.disable-submit").submit(function(e){
+        e.preventDefault();
+        var elem = $(this).first();
+        $.each(elem,function(index, value){
+            if (value.hasAttribute('data-submit-btn')){
+                var attr = $(value).attr('data-submit-btn');
+                $(attr).click();
+            }
+        });
+    });
+    $('.popoverable').popover();
+});

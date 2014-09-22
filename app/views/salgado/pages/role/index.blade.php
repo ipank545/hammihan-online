@@ -20,9 +20,6 @@
 
 @section('script')
     @parent
-    <script type="text/javascript">
-        console.log({{ $roles  }});
-    </script>
-    <script type="text/javascript" src="{{ asset('assets/JsLibs/Common.js') }}"></script>
+    @include('salgado.pages.role.partials._scripts')
 @stop
 
