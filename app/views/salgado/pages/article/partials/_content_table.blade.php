@@ -19,8 +19,8 @@
                         </label>
                     </td>
                     <td class="text-left"><code>{{ $article->important_title }}</code></td>
-                    <td>{{ trans("roles.{$article->author}") }}</td>
-                    <td>{{ $role->jalali_created_at }}</td>
+                    <td>{{ trans("articles.{$article->author}") }}</td>
+                    <td>{{ $article->jalali_created_at }}</td>
                     <td style="text-align: left">
                         @include('salgado.pages.article.partials._index_operation')
                     </td>

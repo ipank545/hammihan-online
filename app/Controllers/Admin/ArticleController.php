@@ -123,7 +123,7 @@ class ArticleController extends BaseController {
 
             return $this->redirectRoute('admin.articles.index')->with(
                 'success_message',
-                $this->lang->get('messages.articles.success_delete')   //I'm not sure about messages
+                $this->lang->get('حذف با موفقیت انجام شد')   //I'm not sure about message
             );
         } catch (FormValidationException $e) {
 
@@ -138,7 +138,7 @@ class ArticleController extends BaseController {
 
             $articles = $this->artcl->getAll();
 
-            return $this->redirectRoute('admin.articles.index')->with(
+        return $this->view('salgado.pages.article.index')->with(
                 'articles',$articles
             );
         } catch (FormValidationException $e) {  ///FormValidationException??

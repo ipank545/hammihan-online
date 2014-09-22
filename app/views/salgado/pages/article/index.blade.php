@@ -6,7 +6,7 @@
                 <div class="content-box">
                         @include('salgado.pages.article.partials._index_header')
                         <hr>
-                        @if(! $roles->isEmpty())
+                        @if(! $articles->isEmpty())
                             @include('salgado.pages.article.partials._content_table')
                         @else
                             @include('salgado.pages.article.partials._no_content')

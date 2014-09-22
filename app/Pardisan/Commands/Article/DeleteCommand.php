@@ -1,4 +1,4 @@
-<?php Pardisan\Commands\Article;
+<?php namespace Pardisan\Commands\Article;
 
 class DeleteCommand {
 

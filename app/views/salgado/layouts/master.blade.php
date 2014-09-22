@@ -12,7 +12,6 @@
         @section('stylesheet')
             @include('salgado.layouts.partial.stylesheet')
         @show
-
     </head>
     <body class="fixed-bar {{ $body_classes or 'default' }} @section('body_classes')@show">
         <div id="wrap">

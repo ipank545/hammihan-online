@@ -20,6 +20,7 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
 
         Route::group([ 'prefix' => 'api/v1', 'namespace' => 'Api\V1'],function(){
             Route::post('roles',                            ['uses' => 'RoleController@store',                                              'as' => 'admin.api.v1.roles.store']);
+            Route::post('articles',                            ['uses' => 'ArticleController@store',                                        'as' => 'admin.api.v1.articles.store']);
         });
 
         Route::get('/dash',                                 ['uses' => 'DashboardController@index',                                         'as' => 'admin.dash.index']);
@@ -41,4 +42,7 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
 
 Route::group(['namespace' => 'Controllers\Admin'],function() {
     Route::get('/article', ['uses' => 'ArticleController@showAll', 'as' => 'admin.articles.index']);
+    Route::delete('article/{id}', ['uses' => 'ArticleController@delete', 'as' => 'admin.article.delete']);
+
+
 });

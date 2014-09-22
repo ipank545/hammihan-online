@@ -13,7 +13,7 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
 
     public function editById($id, $data){
 
-        $updateable = $this->model->findById($id);
+        $updateable = $this->model->find($id);
         $updateable->first_title = $data['first_title'];
         $updateable->second_title = $data['second_title'];
         $updateable->important_title = $data['important_title'];
@@ -29,7 +29,7 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
 
     public function deleteById($id){
 
-        $dleable = $this->model->findById($id);
+        $dleable = $this->model->find($id);
         $dleable->delete();
     }
 
