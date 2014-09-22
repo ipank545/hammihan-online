@@ -97,18 +97,20 @@
                         </li>
                     </ul>
                 </div>
-			</dic>
+			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-	    $(document).ready(function(){
-            var elem = $(".content-box");
-            var height = 0;
-            $.each(elem, function(index, elem){
-                var elemHeight = $(elem).height();
-                height = elemHeight > height ? elemHeight : height;
-            });
-            elem.height(height);
-	    });
-	</script>
+@stop
+
+@section('script')
+    @parent
+    <script type="text/javascript" src="{{ asset('assets/JsLibs/CssSnippets.js') }}"></script>
+    <script type="text/javascript">
+        /**
+         * Make dashboard boxes equal-heighted
+         */
+        $(document).ready(function(){
+            CssSnippets.makeEqualHeight('.content-box');
+        });
+    </script>
 @stop

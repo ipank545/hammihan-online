@@ -14,9 +14,10 @@
             <div class="modal-footer">
                 <button
                     type="button"
-                    class="btn btn-danger pull-left"
+                    class="btn btn-danger pull-right"
                     onclick="Common.submitDeleteForm('#delete_form')"
                 >
+                    <span class="glyphicon glyphicon-check"></span>
                     تایید میکنم
                 </button>
                 <button
@@ -24,6 +25,7 @@
                     class="btn btn-default pull-left"
                     data-dismiss="modal"
                 >
+                    <span class="glyphicon glyphicon-remove"></span>
                     بستن
                 </button>
             </div>

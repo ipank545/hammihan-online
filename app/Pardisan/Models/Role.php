@@ -8,4 +8,5 @@ class Role extends EntrustRole
     use PersianDateTrait;
 
     protected $guarded = [];
+
 } 

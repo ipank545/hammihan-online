@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Laracasts\Commander\CommanderTrait;
 
@@ -105,6 +106,18 @@ class BaseController extends \Controller {
     protected function view($bladeablePath, $data = [])
     {
         return View::make($bladeablePath, $data);
+    }
+
+    /**
+     * Send json responses
+     *
+     * @param $data
+     * @param int $status
+     * @return Response
+     */
+    protected function responseJson($data, $status = 200)
+    {
+        return Response::json($data, $status);
     }
 
 }

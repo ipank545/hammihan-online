@@ -326,3 +326,52 @@ ul.social-menu > li > a > img:hover {
   -webkit-filter: grayscale(0%);
   opacity: 1;
 }
+
+.languageLeft {
+    text-align: left;
+    direction: ltr;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    display: none;
+    border-style: solid;
+    border-color: rgba(0,0,0,0);
+    border-top-color: #8942b1;
+    border-width: 3px 0px 0px 0px;
+
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+
+    -webkit-animation: spin 0.5s infinite linear;
+    -moz-animation: spin 0.5s infinite linear;
+    -o-animation: spin 0.5s infinite linear;
+    animation: spin 0.5s infinite linear;
+}
+
+@-webkit-keyframes spin {
+    from {-webkit-transform: rotate(0deg);}
+    to   {-webkit-transform: rotate(359deg);}
+}
+
+@-moz-keyframes spin {
+    from {-moz-transform: rotate(0deg);}
+    to   {-moz-transform: rotate(359deg);}
+}
+
+@-o-keyframes spin {
+    from {-o-transform: rotate(0deg);}
+    to   {-o-transform: rotate(359deg);}
+}
+
+@keyframes spin{
+    from {transform: rotate(0deg);}
+    to   {transform: rotate(359deg);}
+}
+.modalImageSpinner {
+    width: 50px;
+    margin: 0 auto;
+    margin-top:20px;
+}
