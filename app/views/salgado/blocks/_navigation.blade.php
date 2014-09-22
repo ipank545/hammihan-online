@@ -13,9 +13,9 @@
         <!-- Serialize visible content on toggle -->
         <div class="collapse navbar-collapse" id="serialize-main-menu">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">داشبورد</a></li>
-                <li><a href="series">خبر</a></li>
-                <li><a href="films">لاگ</a></li>
+                <li class="{{ Menu::is('admin.dash.index') ? 'active' : '' }}"><a href="{{ URL::route('admin.dash.index')}} ">داشبورد</a></li>
+                <li class="{{ Menu::is('admin.permissions.index') ? 'active' : '' }}"><a href="{{ URL::route('admin.permissions.index') }}">مجوزهای کاربری</a></li>
+                <li class="{{ Menu::is('admin.roles.index') ? 'active' : '' }}"><a href="{{ URL::route('admin.roles.index') }}">نقش های کاربری</a></li>
                 <li><a href="#">مدیریت کاربران</a></li>
             </ul>
             @if( ! Auth::check() )

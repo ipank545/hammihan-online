@@ -21,6 +21,8 @@ class SettingsServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-
+        $this->app->bindShared('menu',function($app){
+            return $app->make('Pardisan\Support\Menu');
+        });
     }
 }
