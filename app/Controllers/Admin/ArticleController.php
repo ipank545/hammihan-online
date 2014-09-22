@@ -1,15 +1,19 @@
 <?php namespace Controllers\Admin;
 
+use Controllers\BaseController;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Translation\Translator;
 use Laracasts\Commander\CommanderTrait;
 use Laracasts\Validation\FormValidationException;
+use Pardisan\Repositories\Exceptions\ArticleRepositoryInterface;
+use Pardisan\Repositories\Eloquent\ArticleRepository;
+use Symfony\Component\CssSelector\Exception\ExpressionErrorException;
 
 class ArticleController extends BaseController {
 
-     /**
+    /**
      * @var Request
      */
     protected $request;
@@ -24,6 +28,8 @@ class ArticleController extends BaseController {
      */
     protected $lang;
 
+
+    protected $artcl;
     /**
      * @param Request $request
      * @param AuthManager $auth
@@ -32,11 +38,13 @@ class ArticleController extends BaseController {
     public function __construct(
         Request $request,
         AuthManager $auth,
-        Translator $lang
+        Translator $lang,
+        ArticleRepositoryInterface $artcl
     ){
         $this->request = $request;
         $this->auth = $auth;
         $this->lang = $lang;
+        $this->artcl = $artcl;
     }
 
     /**
@@ -118,6 +126,22 @@ class ArticleController extends BaseController {
                 $this->lang->get('messages.articles.success_delete')   //I'm not sure about messages
             );
         } catch (FormValidationException $e) {
+
+            return $this->redirectBack()->withErrors($e->getErrors());
+        }
+    }
+
+    public function showAll()
+    {
+
+        try {
+
+            $articles = $this->artcl->getAll();
+
+            return $this->redirectRoute('admin.articles.index')->with(
+                'articles',$articles
+            );
+        } catch (FormValidationException $e) {  ///FormValidationException??
 
             return $this->redirectBack()->withErrors($e->getErrors());
         }

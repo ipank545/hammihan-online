@@ -32,4 +32,9 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
         $dleable = $this->model->findById($id);
         $dleable->delete();
     }
+
+    public function getAll(){
+        $disply = $this->model->all();
+        return $disply;
+    }
 }

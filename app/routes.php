@@ -38,3 +38,7 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
         Route::get('/login',                                ['uses' => 'AuthController@getLogin',                                           'as' => 'admin.auth.get_login']);
     });
 });
+
+Route::group(['namespace' => 'Controllers\Admin'],function() {
+    Route::get('/article', ['uses' => 'ArticleController@showAll', 'as' => 'admin.articles.index']);
+});

@@ -10,9 +10,9 @@ interface ArticleRepositoryInterface {
 
     public function deleteById($id);
 
-    /*public function showById($id);
+    /*public function showById($id);*/
 
-    public function showAll();*/
+    public function getAll();
 
 
 
