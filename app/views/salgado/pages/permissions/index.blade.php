@@ -49,7 +49,7 @@
                                                             type="checkbox"
                                                             name="roles[{{ $role['id'] }}][permissions][{{ $permission['id'] }}]"
                                                             value="{{ $permission['id'] }}"
-                                                            {{ !empty($role['perms'][$role['id']]) ? 'checked' : ''}}
+                                                            {{ isset($permRoles[$permission['id']][$role->id]) ? 'checked' : ''}}
                                                         >
                                                     </label>
                                                 </td>

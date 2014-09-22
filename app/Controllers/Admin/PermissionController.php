@@ -38,16 +38,19 @@ class PermissionController extends BaseController {
      */
     public function index()
     {
-        $roles = $this->execute('Pardisan\Commands\Role\RoleIndexCommand')->toArray();
+        $roles = $this->execute('Pardisan\Commands\Role\RoleIndexCommand');
 
-        $permissions = $this->execute('Pardisan\Commands\Permission\InfoCommand')->toArray();
+        $permissions = $this->execute('Pardisan\Commands\Permission\InfoCommand');
 
-        $rolePermissions =
+        $permRoles = [];
 
+        foreach($permissions as $perm){
+            $permRoles[$perm->id] = $perm->roles->lists('name', 'id');
+        }
 
         return $this->view(
             'salgado.pages.permissions.index',
-            compact('roles', 'permissions')
+            compact('roles', 'permissions', 'permRoles')
         );
     }
 
