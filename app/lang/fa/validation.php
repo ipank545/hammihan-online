@@ -130,6 +130,7 @@ return array(
         "time" => "زمان",
         "available" => "موجود",
         "size" => "اندازه",
-        'identifier'    =>  'شناسه کابری'
+        'identifier'    =>  'شناسه کابری',
+        'old_password'  =>  'پسورد قدیمی'
     ),
 );

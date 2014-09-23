@@ -3,12 +3,17 @@
 
 use Pardisan\Models\Article;
 use Pardisan\Repositories\Exceptions\ArticleRepositoryInterface;
-
+use Bigsinoos\JEloquent\PersianDateTrait;
 class ArticleRepository extends AbstractRepository implements ArticleRepositoryInterface {
 
     public function __construct(Article $model){
 
         $this->model = $model;
+    }
+
+    public function createRaw(array $data){
+
+        return $this->model->newInstance()->create($data);
     }
 
     public function editById($id, $data){

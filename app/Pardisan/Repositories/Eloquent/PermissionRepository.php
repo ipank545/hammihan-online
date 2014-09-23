@@ -1,6 +1,7 @@
 <?php namespace Pardisan\Repositories\Eloquent; 
 
 use Pardisan\Models\Permission;
+use Pardisan\Models\Role;
 use Pardisan\Repositories\PermissionRepositoryInterface;
 
 class PermissionRepository extends AbstractRepository implements PermissionRepositoryInterface
@@ -22,5 +23,18 @@ class PermissionRepository extends AbstractRepository implements PermissionRepos
     {
         return $this->model->newInstance()->with('roles')->get();
 
+    }
+
+    /**
+     * Add permissions to role
+     *
+     * @param Role $role
+     * @param array $insertables
+     * @return mixed
+     */
+    public function addPermissionsToRole(Role $role, array $insertables)
+    {
+        $role->perms()->sync($insertables);
+        return $role;
     }
 }

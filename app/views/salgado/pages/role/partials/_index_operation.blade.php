@@ -9,5 +9,5 @@
 	>
 	    <span class="glyphicon glyphicon-remove"></span>
 	</button>
-    <a href="#" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+    <!--a href="#" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a-->
 </div>

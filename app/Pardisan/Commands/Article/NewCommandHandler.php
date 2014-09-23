@@ -4,7 +4,7 @@ use Laracasts\Commander\CommandHandler;
 use Pardisan\Commands\AbstractCommandHandler;
 use Pardisan\Repositories\Exceptions\ArticleRepositoryInterface;
 
-class ArticleCommandHandler extends AbstractCommandHandler implements CommandHandler {
+class NewCommandHandler extends AbstractCommandHandler implements CommandHandler {
 
     /**
      * @var ArticleRepositoryInterface
@@ -26,7 +26,9 @@ class ArticleCommandHandler extends AbstractCommandHandler implements CommandHan
      */
     public function handle($command)
     {
-        $command->url_slug = $command->id;
+
+        $command->url_slug = null;
+        $command->status_id = 1;
         return $this->articleRepo->createRaw(get_object_vars($command));
     }
 }

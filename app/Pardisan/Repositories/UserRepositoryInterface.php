@@ -1,6 +1,7 @@
 <?php namespace Pardisan\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use Pardisan\Models\User;
 
 interface UserRepositoryInterface {
     /**
@@ -10,4 +11,13 @@ interface UserRepositoryInterface {
      * @return Model
      */
     public function createRaw (array $data);
+
+    /**
+     * Updating user
+     *
+     * @param User $user
+     * @param array $data
+     * @return mixed
+     */
+    public function updateUser (User $user, array $data);
 } 

@@ -141,7 +141,7 @@ class ArticleController extends BaseController {
         return $this->view('salgado.pages.article.index')->with(
                 'articles',$articles
             );
-        } catch (FormValidationException $e) {  ///FormValidationException??
+        } catch (FormValidationException $e) {
 
             return $this->redirectBack()->withErrors($e->getErrors());
         }

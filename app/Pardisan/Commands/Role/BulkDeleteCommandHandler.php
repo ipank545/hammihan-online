@@ -22,6 +22,6 @@ class BulkDeleteCommandHandler extends AbstractCommandHandler implements Command
      */
     public function handle($command)
     {
-        return dd($this->roleRepo->bulkDelete($command->deleteables));
+        return $this->roleRepo->bulkDelete($command->deleteables);
     }
 }

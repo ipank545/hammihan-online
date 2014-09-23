@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+
     @include('salgado.pages.article.partials._index_modals')
 @stop
 

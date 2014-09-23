@@ -335,7 +335,6 @@ ul.social-menu > li > a > img:hover {
 .spinner {
     width: 50px;
     height: 50px;
-    display: none;
     border-style: solid;
     border-color: rgba(0,0,0,0);
     border-top-color: #8942b1;
@@ -374,4 +373,59 @@ ul.social-menu > li > a > img:hover {
     width: 50px;
     margin: 0 auto;
     margin-top:20px;
+}
+
+.spinner-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    right: 0;
+    margin: 0;
+    display: none;
+}
+
+.vertical-center {
+    position: absolute;
+    top:0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+}
+
+.spinner-inner {
+    height: 70px;
+    witdth: 60px;
+}
+
+.spinner-inner > * {
+    display: block;
+    margin: 0 auto;
+}
+
+ul {
+    padding-right: 0;
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+ul li {
+    font-size: 12px;
+}
+.alert ul li {
+    padding-top:4px;
+    padding-bottom: 4px;
+}
+
+.deleteables {
+    display: none;
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: none;
+}
+
+.control-group {
+    margin-top : 10px;
+    margin-bottom: 10px;
 }

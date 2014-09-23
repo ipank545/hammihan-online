@@ -17,6 +17,7 @@ class CreateTagsTable extends Migration {
             $t->string('title')->nulllable();
             $t->string('slug')->index();
         });
+
         Schema::create('taggables',function($table){
 
             $table->integer('taggable_id');
@@ -34,6 +35,8 @@ class CreateTagsTable extends Migration {
 	public function down()
 	{
 		Schema::drop('tags');
+        Schema::drop('taggables');
+
 	}
 
 }

@@ -13,9 +13,9 @@
         <!-- Serialize visible content on toggle -->
         <div class="collapse navbar-collapse" id="serialize-main-menu">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">داشبورد</a></li>
-                <li><a href="series">خبر</a></li>
-                <li><a href="films">لاگ</a></li>
+                <li class="{{ Menu::is('admin.dash.index') ? 'active' : '' }}"><a href="{{ URL::route('admin.dash.index')}} ">داشبورد</a></li>
+                <li class="{{ Menu::is('admin.permissions.index') ? 'active' : '' }}"><a href="{{ URL::route('admin.permissions.index') }}">مجوزهای کاربری</a></li>
+                <li class="{{ Menu::is('admin.roles.index') ? 'active' : '' }}"><a href="{{ URL::route('admin.roles.index') }}">نقش های کاربری</a></li>
                 <li><a href="#">مدیریت کاربران</a></li>
             </ul>
             @if( ! Auth::check() )
@@ -26,7 +26,7 @@
             @else
             <div class="navbar-left call-to-action btn-group" style="margin-top: 28px;">
                 <div class="btn-group">
-                    <button type="button" style="border-radius:0px;" class="btn btn-default profile-btn" data-toggle="dropdown">
+                    <button type="button" style="border-radius:0px;" class="btn btn-default profile-btn" data-toggle="modal" data-target="#profileModal">
                        <span class="glyphicon glyphicon-user"></span> {{$currentUser->identifier()}}
                     </button>
                     <a href="{{URL::route('admin.auth.logout')}}" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span> خروج</a>

@@ -1,6 +1,7 @@
 <?php namespace Controllers\Admin; 
 
 use Controllers\BaseController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Translation\Translator;
@@ -11,12 +12,22 @@ use Pardisan\Repositories\Exceptions\RepositoryException;
 class RoleController extends BaseController
 {
 
+    /**
+     * @var Translator
+     */
     protected $lang;
 
+    /**
+     * @var Request
+     */
+    protected $request;
+
     public function __construct(
-        Translator $lang
+        Translator $lang,
+        Request $request
     ){
         $this->lang = $lang;
+        $this->request = $request;
     }
 
     /**
@@ -26,7 +37,9 @@ class RoleController extends BaseController
      */
     public function index()
     {
+
         $roles = $this->execute('Pardisan\Commands\Role\RoleIndexCommand');
+
         return $this->view(
             'salgado.pages.role.index',
             compact('roles')
@@ -40,13 +53,13 @@ class RoleController extends BaseController
      */
     public function bulkDestroy()
     {
-        $items = $this->request->input('deleteable_items',[]);
+        $deletables = $this->request->input('selectable',[]);
 
         try {
 
             $count = $this->execute(
                 'Pardisan\Commands\Role\BulkDeleteCommand',
-                ['deleteables' => $items]
+                ['deleteables' => $deletables]
             );
 
             return $this->redirectRoute('admin.roles.index')->with(
@@ -64,6 +77,13 @@ class RoleController extends BaseController
         }catch(FormValidationException $e){
 
             return $this->redirectBack()->withErrors($e->getErrors());
+
+        }catch(RepositoryException $e){
+
+            return $this->redirectBack()->with(
+                'error_message',
+                $this->lang->get('messages.roles.bulk_delete_relation_error')
+            );
 
         }
     }
@@ -99,6 +119,16 @@ class RoleController extends BaseController
         }catch (FormValidationException $e){
 
             return $this->redirectBack()->withErrors($e->getErrors());
+
+        }catch(RepositoryException $e){
+
+            return $this->redirectBack()->with(
+                'error_message',
+                $this->lang->get(
+                    'messages.roles.single_delete_relation_error',
+                    ['role_id' => $id[0] ]
+                )
+            );
 
         }
     }

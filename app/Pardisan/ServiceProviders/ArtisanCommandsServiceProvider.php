@@ -12,6 +12,7 @@ class ArtisanCommandsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->commands('command.admin_generator');
+        $this->commands('command.permission_generator');
     }
 
     /**
@@ -23,6 +24,10 @@ class ArtisanCommandsServiceProvider extends ServiceProvider
     {
         $this->app->bindShared('command.admin_generator',function($app){
             return $app->make('Pardisan\ArtisanCommands\GenerateAdminCommand');
+        });
+
+        $this->app->bindShared('command.permission_generator', function($app){
+            return $app->make('Pardisan\ArtisanCommands\PermissionGeneratorCommand');
         });
     }
 }

@@ -15,7 +15,7 @@
                     <td>
                         <label>
                             {{ $role->id }}
-                            <input type="checkbox" name="selectable[{{ $role->id }}]" value="{{ $role->id }}">
+                            <input type="checkbox" class="bulk-delete-item" name="selectable[{{ $role->id }}]" value="{{ $role->id }}">
                         </label>
                     </td>
                     <td class="text-left"><code>{{ $role->name }}</code></td>

@@ -5,6 +5,7 @@ use Illuminate\Support\Str;
 use Pardisan\Repositories\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Model;
 use Pardisan\Repositories\Exceptions\RepositoryException;
+use Pardisan\Repositories\Exceptions\RepositoryRelationException;
 
 abstract class AbstractRepository {
 
@@ -46,12 +47,13 @@ abstract class AbstractRepository {
      * @param $value
      * @throws NotFoundException
      * @throws RepositoryException
-     * @return
+     * @return static
      */
     public function findBy ($property, $value)
     {
+        $model = $this->model->newInstance();
         try {
-            $model = $this->model->where($property,'=',$value)->first();
+            $model = $model->where($property,'=',$value)->first();
         }catch (QueryException $e){
             throw new RepositoryException($e->getMessage());
         }
@@ -246,13 +248,30 @@ abstract class AbstractRepository {
     /**
      * Delete by multiple ids
      *
-     * @param $deleteables
+     * @param array $deleteables
+     * @throws RepositoryRelationException
      * @return int
      */
     public function bulkDelete(array $deleteables)
     {
-        if (! empty($deleteables)){
-            return $this->model->newInstance()->whereIn('id', $deleteables)->delete();
+        try {
+            if (! empty($deleteables)){
+                return $this->model->newInstance()->whereIn('id', $deleteables)->delete();
+            }
+        }catch (QueryException $e){
+            $err = new RepositoryRelationException();
+            $err->setDriverException($e);
+            throw new RepositoryRelationException($err->getDriverErrorMessage());
         }
+    }
+
+    /**
+     * Get all
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getAll()
+    {
+        return $this->model->newInstance()->all();
     }
 }

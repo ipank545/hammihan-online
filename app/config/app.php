@@ -205,7 +205,7 @@ return array(
         'Entrust'         => 'Zizaco\Entrust\EntrustFacade',
 
         //Pardisan Facades
-
+        'Menu'            => 'Pardisan\Support\Facades\Menu'
 
 	),
 

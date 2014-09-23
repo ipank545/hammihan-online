@@ -1,6 +1,6 @@
 @include('salgado.blocks._delete_modal')
 <!-- Create article modal -->
-<div class="modal fade" id="createModal" tabindex="-1" style="overflow-y:hidden;" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+<div class="modal fade" id="createModal" tabindex="-1"  role="dialog" aria-labelledby="createModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,27 +15,27 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="role-create-message-wrapper"></div>
+                        <div class="article-create-message-wrapper"></div>
                     </div>
                 </div>
-                {{ Form::open(['route' => 'admin.api.v1.articles.store', 'class' => 'ajaxable-form role-form'])  }}
+                {{ Form::open(['route' => 'admin.api.v1.articles.store', 'class' => 'ajaxable-form article-form'])  }}
                     <div class="row">
                         <div class="col-sm-12">
                              <div class="control-group">
                                 <label>تیتر فرعی بالا</label>
-                                {{ Form::text('first_title', null, ['class' => 'form-control text-left languageLeft mceEditor']) }}
+                                {{ Form::text('first_title', null, ['class' => 'form-control text-left languageLeft']) }}
                              </div>
                             <div class="control-group">
                                 <label> تیتر اصلی</label>
-                                {{ Form::text('important_title', null, ['class' => 'form-control text-left languageLeft mceEditor']) }}
+                                {{ Form::text('important_title', null, ['class' => 'form-control text-left languageLeft']) }}
                             </div>
                             <div class="control-group">
                                 <label> تیتر فرعی پایین</label>
-                                {{ Form::text('second_title', null, ['class' => 'form-control text-left languageLeft mceEditor']) }}
+                                {{ Form::text('second_title', null, ['class' => 'form-control text-left languageLeft']) }}
                             </div>
                             <div class="control-group">
                                  <label>متن </label>
-                                {{ Form::textarea('body', null, ['class' => 'form-control text-left languageLeft ', 'placeholder' => 'Example: editor']) }}
+                                {{ Form::textarea('body', null, ['class' => 'form-control text-left languageLeft mceEditor ']) }}
                             </div>
                             <div class="control-group">
                                 <label>خلاصه خبر </label>
@@ -84,12 +84,12 @@
                         </div>
                     </div>
                     <br>
-                {{ Form::close() }}
+               {{ Form::close() }}
             </div>
             <div class="modal-footer">
                 <button
                     type="button"
-                    class="btn btn-primary pull-right role-form-submit"
+                    class="btn btn-primary pull-right article-form-submit"
                     onclick=""
                 >
                     <span class="glyphicon glyphicon-plus"></span>
@@ -105,11 +105,11 @@
                 </button>
             </div>
         </div>
-  </div>
+    </div>
 </div>
 @section('script')
     @parent
-    <script type="text/javascript" src="{{ asset('assets/JsLibs/Salgado.js') }}"></script>
+    //<script type="text/javascript" src="{{ asset('assets/JsLibs/Salgado.js') }}"></script>
     <script class="error-message-template" type="text/template">
         <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -129,10 +129,10 @@
         </div>
     </script>
     <script type="text/javascript">
-        $(".role-form-submit").click(function(e){
-            var messageContainer = $(".role-create-message-wrapper");
+        $(".article-form-submit").click(function(e){
+            var messageContainer = $(".article-create-message-wrapper");
             var formWrapper = $("#createModal .modal-body");
-            var form = $(".ajaxable-form.role-form");
+            var form = $(".ajaxable-form.article-form");
             Salgado.ajaxForm(form, messageContainer, formWrapper, $(this))
         });
     </script>
