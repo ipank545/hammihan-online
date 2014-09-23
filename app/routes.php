@@ -20,6 +20,7 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
 
         Route::group([ 'prefix' => 'api/v1', 'namespace' => 'Api\V1'],function(){
             Route::post('roles',                            ['uses' => 'RoleController@store',                                              'as' => 'admin.api.v1.roles.store']);
+            Route::put('users/me-update',                        ['uses' => 'UserController@profileUpdate',                                      'as' => 'admin.api.v1.users.profile_update']);
         });
 
         Route::get('/dash',                                 ['uses' => 'DashboardController@index',                                         'as' => 'admin.dash.index']);

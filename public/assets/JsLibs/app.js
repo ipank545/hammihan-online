@@ -21,6 +21,7 @@
 })(jQuery);
 
 $(document).ready(function(){
+
     $("form.disable-submit").submit(function(e){
         e.preventDefault();
         var elem = $(this).first();
@@ -31,5 +32,15 @@ $(document).ready(function(){
             }
         });
     });
+
     $('.popoverable').popover();
+
+    $(".profile-update-form-submit").click(function(e){
+        console.log('slam');
+        var messageContainer = $(".update-profile-message-wrapper");
+        var formWrapper = $("#profileModal .modal-body");
+        var form = $(".ajaxable-form.profile-update-form");
+        Salgado.ajaxForm(form, messageContainer, formWrapper, $(this));
+    });
+
 });

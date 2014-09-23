@@ -26,7 +26,7 @@
             @else
             <div class="navbar-left call-to-action btn-group" style="margin-top: 28px;">
                 <div class="btn-group">
-                    <button type="button" style="border-radius:0px;" class="btn btn-default profile-btn" data-toggle="dropdown">
+                    <button type="button" style="border-radius:0px;" class="btn btn-default profile-btn" data-toggle="modal" data-target="#profileModal">
                        <span class="glyphicon glyphicon-user"></span> {{$currentUser->identifier()}}
                     </button>
                     <a href="{{URL::route('admin.auth.logout')}}" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span> خروج</a>

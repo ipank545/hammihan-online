@@ -33,6 +33,10 @@
 
             @yield('content')
 
+            @if(! empty($currentUser))
+                @include('salgado.blocks._profile_modal')
+            @endif
+
         </div>
 
         @section('footer')

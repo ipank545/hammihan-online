@@ -412,6 +412,10 @@ ul {
 ul li {
     font-size: 12px;
 }
+.alert ul li {
+    padding-top:4px;
+    padding-bottom: 4px;
+}
 
 .deleteables {
     display: none;
@@ -419,4 +423,9 @@ ul li {
 
 a:hover, a:focus, a:active {
     text-decoration: none;
+}
+
+.control-group {
+    margin-top : 10px;
+    margin-bottom: 10px;
 }
