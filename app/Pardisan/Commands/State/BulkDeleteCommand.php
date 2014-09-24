@@ -1,4 +1,4 @@
-<?php namespace Pardisan\Commands\Role; 
+<?php namespace Pardisan\Commands\State; 
 
 use Pardisan\Commands\AbstractBulkDeleteCommand;
 

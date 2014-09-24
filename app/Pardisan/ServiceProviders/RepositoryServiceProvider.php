@@ -37,8 +37,13 @@ class RepositoryServiceProvider extends ServiceProvider{
         );
 
         $this->app->bind(
-            'Pardisan\Repositories\Exceptions\ArticleRepositoryInterface',
+            'Pardisan\Repositories\ArticleRepositoryInterface',
             'Pardisan\Repositories\Eloquent\ArticleRepository'
+        );
+
+        $this->app->bind(
+            'Pardisan\Repositories\StateRepositoryInterface',
+            'Pardisan\Repositories\Eloquent\StateRepository'
         );
     }
 }
