@@ -6,10 +6,10 @@ class NewValidator extends FormValidator {
 
     protected $rules = [
         'user_id'         =>  'required|exists:users,id',
-        'body'            =>  'required',
+       // 'body'            =>  'required',
         'important_title' =>  'required',
-        'status_id'       =>  'required',
-        'published_at'    =>  'required',
+       // 'status_id'       =>  'required',
+        'publish_date'    =>  'required',
         'summary'         =>  'required'
     ];
 

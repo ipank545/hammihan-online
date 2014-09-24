@@ -1,5 +1,6 @@
 <?php namespace Pardisan\Commands\Article;
 
+use Illuminate\Support\Facades\Auth;
 use Laracasts\Commander\CommandHandler;
 use Pardisan\Commands\AbstractCommandHandler;
 use Pardisan\Repositories\Exceptions\ArticleRepositoryInterface;
@@ -29,6 +30,7 @@ class NewCommandHandler extends AbstractCommandHandler implements CommandHandler
 
         $command->url_slug = null;
         $command->status_id = 1;
+       // $command->user_id = Auth::user()->id;
         return $this->articleRepo->createRaw(get_object_vars($command));
     }
 }

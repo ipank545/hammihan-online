@@ -19,7 +19,7 @@ class NewCommand {
         $important_title,
         $summary,
         $body,
-        $publish_date,   // changable??
+        $publish_date,
         $status_id,
         $author,
         $user_id

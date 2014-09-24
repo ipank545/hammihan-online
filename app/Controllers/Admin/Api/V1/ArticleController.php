@@ -2,6 +2,7 @@
 
 use Controllers\BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Translation\Translator;
 use Laracasts\Commander\CommanderTrait;
 use Laracasts\Validation\FormValidationException;
@@ -31,13 +32,11 @@ class ArticleController extends BaseController {
      */
     public function __construct(
         Request $request,
-        Translator $lang,
-        AuthManager $auth
-
+        Translator $lang
     ){
         $this->request = $request;
         $this->lang = $lang;
-        $this->auth = $auth;
+
     }
 
     /**
@@ -57,8 +56,7 @@ class ArticleController extends BaseController {
             'author'
         );
 
-        $input['user_id'] = $this->auth->user()->id;
-
+        $input['user_id'] = Auth::user()->id;
 
         try {
 

@@ -3,7 +3,7 @@
 
 use Pardisan\Models\Article;
 use Pardisan\Repositories\Exceptions\ArticleRepositoryInterface;
-use Bigsinoos\JEloquent\PersianDateTrait;
+
 class ArticleRepository extends AbstractRepository implements ArticleRepositoryInterface {
 
     public function __construct(Article $model){

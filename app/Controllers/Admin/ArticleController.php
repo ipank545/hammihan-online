@@ -3,6 +3,7 @@
 use Controllers\BaseController;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Translation\Translator;
 use Laracasts\Commander\CommanderTrait;
@@ -64,10 +65,11 @@ class ArticleController extends BaseController {
             'status_id',
             'author'
         );
+        
+        $input['user_id'] = Auth::user()->id;
 
-        $input['user_id'] = $this->auth->user()->id;
 
-        try {
+         try {
 
             $newArticle = $this->execute('Pardisan\Commands\Article\NewCommand', $input);
 
