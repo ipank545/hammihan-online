@@ -57,6 +57,10 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
     });
 });
 
+Route::group(['namespace' => 'Controllers'],function(){
+    Route::get('cats/{id}',                                 ['uses' => 'CategoryController@show',                                           'as' => 'categories.show']);
+});
+
 Route::group(['namespace' => 'Controllers\Admin'],function() {
     Route::get('/article', ['uses' => 'ArticleController@showAll', 'as' => 'admin.articles.index']);
     Route::delete('article/{id}', ['uses' => 'ArticleController@delete', 'as' => 'admin.article.delete']);

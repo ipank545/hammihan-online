@@ -2,7 +2,7 @@
 
 use Laracasts\Validation\FormValidator;
 
-class CommandValidator extends FormValidator
+class Validator extends FormValidator
 {
     protected $rules = [
         'name'  =>  'max:150|required',

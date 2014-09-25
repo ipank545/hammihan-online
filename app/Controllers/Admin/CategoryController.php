@@ -4,8 +4,11 @@ use Controllers\BaseController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
+use Illuminate\Translation\Translator;
+use Laracasts\Validation\FormValidationException;
 use Pardisan\Repositories\CategoryRepositoryInterface;
 use Pardisan\Repositories\Exceptions\NotFoundException;
+use Pardisan\Repositories\Exceptions\RepositoryException;
 
 class CategoryController extends BaseController
 {
@@ -15,12 +18,20 @@ class CategoryController extends BaseController
     protected $catRepo;
 
     /**
+     * @var Translator
+     */
+    protected $lang;
+
+    /**
      * @param CategoryRepositoryInterface $catRepo
+     * @param Translator $lang
      */
     public function __construct(
-        CategoryRepositoryInterface $catRepo
+        CategoryRepositoryInterface $catRepo,
+        Translator $lang
     ){
         $this->catRepo = $catRepo;
+        $this->lang = $lang;
     }
 
     /**
@@ -44,7 +55,7 @@ class CategoryController extends BaseController
      */
     public function create()
     {
-        return $this->view('admin.pages.category.create_edit');
+        return $this->view('salgado.pages.category.create_edit');
     }
 
     /**
@@ -60,7 +71,7 @@ class CategoryController extends BaseController
             $category = $this->catRepo->findById($id);
 
             return $this->view(
-                'admin.pages.category.create_edit',
+                'salgado.pages.category.create_edit',
                 compact('category')
             );
 
@@ -87,7 +98,19 @@ class CategoryController extends BaseController
      *
      * @return Redirect
      */
-    public function store(){}
+    public function store(){
+        try {
+            $created = $this->execute('Pardisan\Commands\Category\Store\Command');
+            return $this->redirectRoute('admin.categories.index')->with(
+                'success_message',
+                $this->lang->get('messages.categories.success_update', ['name' => $created->name])
+            );
+        }catch (NotFoundException $e){
+            App::abort(404);
+        }catch(FormValidationException $e){
+            return $this->redirectBack()->withInput()->withErrors($e->getErrors());
+        }
+    }
 
     /**
      * Updating a cat in db
@@ -95,6 +118,8 @@ class CategoryController extends BaseController
      * @param $id
      * @return Redirect
      */
-    public function update($id){}
+    public function update($id){
+
+    }
 
 } 
