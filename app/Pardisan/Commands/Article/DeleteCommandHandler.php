@@ -4,14 +4,16 @@ use Laracasts\Commander\CommandHandler;
 use Pardisan\Commands\AbstractCommandHandler;
 use Pardisan\Repositories\Exceptions\ArticleRepositoryInterface;
 
-class DeleteCommandHandler extends AbstractCommandHandler implements CommandHandler {
-
+class DeleteCommandHandler extends AbstractCommandHandler implements CommandHandler
+{
     protected $articleRepo;
 
-    public function __construct(ArticleRepositoryInterface $article){
-
-        $this->articleRepo = $article;
+    public function __construct(
+        ArticleRepositoryInterface $articleRepo
+    ){
+        $this->articleRepo = $articleRepo;
     }
+
     /**
      * Handle the command
      *
@@ -20,6 +22,6 @@ class DeleteCommandHandler extends AbstractCommandHandler implements CommandHand
      */
     public function handle($command)
     {
-        $this->articleRepo->deleteById($command->id);
+        return $this->articleRepo->bulkDelete($command->deleteables);
     }
 }

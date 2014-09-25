@@ -63,7 +63,8 @@ class ArticleController extends BaseController {
             'body',
             'publish_date',
             'status_id',
-            'author'
+            'author',
+            'category'
         );
         
         $input['user_id'] = Auth::user()->id;
@@ -119,19 +120,41 @@ class ArticleController extends BaseController {
     public function delete($id)
     {
 
+        $id = (array)$id;
         try {
 
-            $this->execute('Pardisan\Commands\Article\DeleteCommand', ['id' => $id]);
+            $deleted = $this->execute(
+                'Pardisan\Commands\Article\DeleteCommand',
+                ['deleteables' => $id]
+            );
 
             return $this->redirectRoute('admin.articles.index')->with(
                 'success_message',
-                $this->lang->get('حذف با موفقیت انجام شد')   //I'm not sure about message
+                $this->lang->get('حذف با موفقیت انجام شد')
             );
+
+        } catch (NotFoundException $e) {
+
+            App::abort(404);
+
         } catch (FormValidationException $e) {
 
             return $this->redirectBack()->withErrors($e->getErrors());
+
+        } catch (RepositoryException $e) {
+
+            return $this->redirectBack()->with(
+                'error_message',
+                $this->lang->get(
+                    'messages.roles.single_delete_relation_error',
+                    ['article_id' => $id[0]]
+                )
+            );
+
         }
+
     }
+
 
     public function showAll()
     {
@@ -146,6 +169,48 @@ class ArticleController extends BaseController {
         } catch (FormValidationException $e) {
 
             return $this->redirectBack()->withErrors($e->getErrors());
+        }
+    }
+
+    /**
+     * Delete a role from repo
+     *
+     * @return Redirect
+     */
+    public function bulkDelete()
+    {
+        $deletables = $this->request->input('selectable',[]);
+
+        try {
+
+            $count = $this->execute(
+                'Pardisan\Commands\Article\DeleteCommand',
+                ['deleteables' => $deletables]
+            );
+
+            return $this->redirectRoute('admin.articles.index')->with(
+                'success_message',
+                $this->lang->get(
+                    'آیتم (ها)با موفقیت حذف شدند',
+                    ['count' => $count]
+                )
+            );
+
+        }catch (NotFoundException $e){
+
+            App::abort(404);
+
+        }catch(FormValidationException $e){
+
+            return $this->redirectBack()->withErrors($e->getErrors());
+
+        }catch(RepositoryException $e){
+
+            return $this->redirectBack()->with(
+                'error_message',
+                $this->lang->get('messages.articles.bulk_delete_relation_error')
+            );
+
         }
     }
 } 

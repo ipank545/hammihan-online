@@ -2,7 +2,7 @@
 
 use Laracasts\Validation\FormValidator;
 
-class NewValidator extends FormValidator {
+class NewCommandValidator extends FormValidator {
 
     protected $rules = [
         'user_id'         =>  'required|exists:users,id',

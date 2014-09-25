@@ -1,12 +1,11 @@
 <?php namespace Pardisan\Commands\Article;
 
-class DeleteCommand {
+class DeleteCommand
+{
+    public $deleteables;
 
-    public $id;
-
-    public function __construct($id){
-
-        $this->id = $id;
+    public function __construct($deleteables)
+    {
+        $this->deleteables = $deleteables;
     }
-
-} 
+}

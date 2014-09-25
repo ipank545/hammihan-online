@@ -1,6 +1,8 @@
 <?php namespace Pardisan\Repositories\Exceptions;
 
-use Illuminate\Database\Eloquent\Model;
+
+use Pardisan\Models\Article;
+
 
 interface ArticleRepositoryInterface {
 
@@ -8,7 +10,7 @@ interface ArticleRepositoryInterface {
 
     public function editById($id, $data);
 
-    public function deleteById($id);
+    public function bulkDelete(array $deleteables);
 
     /*public function showById($id);*/
 

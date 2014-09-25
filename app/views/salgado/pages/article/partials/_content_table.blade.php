@@ -15,12 +15,12 @@
                     <td>
                         <label>
                             {{ $article->id }}
-                            <input type="checkbox" name="selectable[{{ $article->id }}]" value="{{ $article->id }}">
+                            <input type="checkbox" class="bulk-delete-item"  name="selectable[{{ $article->id }}]" value="{{ $article->id }}">
                         </label>
                     </td>
                     <td class="text-left"><code>{{ $article->important_title }}</code></td>
                     <td>{{ trans("{$article->author}") }}</td>
-                    <td>{{ $article->jalali_created_at }}</td>
+                    <td>{{ $article->jalali_publish_date }}</td>
                     <td style="text-align: left">
                         @include('salgado.pages.article.partials._index_operation')
                     </td>
