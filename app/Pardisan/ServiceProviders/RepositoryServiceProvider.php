@@ -45,5 +45,20 @@ class RepositoryServiceProvider extends ServiceProvider{
             'Pardisan\Repositories\StateRepositoryInterface',
             'Pardisan\Repositories\Eloquent\StateRepository'
         );
+
+        $this->app->bind(
+            'Pardisan\Repositories\CategoryRepositoryInterface',
+            'Pardisan\Repositories\Eloquent\CategoryRepository'
+        );
+
+        $this->app->bind(
+            'Pardisan\Repositories\TagRepositoryInterface',
+            'Pardisan\Repositories\Eloquent\TagRepository'
+        );
+
+        $this->app->bind(
+            'Pardisan\Repositories\CommentRepositoryInterface',
+            'Pardisan\Repositories\Eloquent\CommentRepository'
+        );
     }
 }

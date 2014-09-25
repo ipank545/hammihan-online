@@ -69,4 +69,14 @@ class Article extends Model {
     {
         return $this->belongsTo('Pardisan\Models\User', 'user_id');
     }
+
+    /**
+     * Article comments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany('Pardisan\Models\Comment', 'commentable');
+    }
 } 

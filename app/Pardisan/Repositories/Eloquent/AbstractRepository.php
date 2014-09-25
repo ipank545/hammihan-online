@@ -1,9 +1,11 @@
 <?php namespace Pardisan\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
 use Pardisan\Repositories\Eloquent\HelperTraits\DeleteTrait;
 use Pardisan\Repositories\Eloquent\HelperTraits\SearchTrait;
+use Pardisan\Repositories\Exceptions\InvalidArgumentException;
 use Pardisan\Repositories\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Model;
 use Pardisan\Repositories\Exceptions\RepositoryException;
@@ -38,6 +40,20 @@ abstract class AbstractRepository {
             return $this->model->newInstance()->create($data);
         } catch (QueryException $e) {
             throw new RepositoryException($e->getMessage());
+        }
+    }
+
+    public function updateRawById($id, array $data)
+    {
+        try {
+            $updateable = $this->model->newInstance()->findOrFail($id);
+            $updateable->fill($data);
+            $updateable->save();
+            return $updateable;
+        }catch (ModelNotFoundException $e){
+            throw new NotFoundException($e->getMessage());
+        }catch (QueryException $e){
+            throw new InvalidArgumentException($e->getMessage());
         }
     }
 

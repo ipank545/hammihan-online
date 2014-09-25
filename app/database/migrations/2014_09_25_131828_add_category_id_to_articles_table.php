@@ -13,7 +13,7 @@ class AddCategoryIdToArticlesTable extends Migration {
 	public function up()
 	{
 		Schema::table('articles', function(Blueprint $t){
-            $t->unsignedInteger('category_id')->after('id')->nullable()->index();
+            $t->unsignedInteger('category_id')->after('id')->nullable();
         });
 
         Schema::table('articles', function(Blueprint $t){
@@ -29,8 +29,8 @@ class AddCategoryIdToArticlesTable extends Migration {
 	public function down()
 	{
 		Schema::table('articles', function($t){
-            $t->dropColumn('category_id');
             $t->dropForeign('articles_category_id_foreign');
+            $t->dropColumn('category_id');
         });
 	}
 
