@@ -38,6 +38,12 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
         Route::delete('article_states/{id}',                ['uses' => 'StateController@destroy',                                           'as' => 'admin.article_states.destroy']);
         Route::put('article_states/{id}',                   ['uses' => 'StateController@create',                                            'as' => 'admin.article_states.update']);
         Route::get('article_states/{id}/edit',              ['uses' => 'StateController@edit',                                              'as' => 'admin.article_states.edit']);
+        Route::get('users/create',                          ['uses' => 'UserController@create',                                             'as' => 'admin.users.create']);
+        Route::get('users',                                 ['uses' => 'UserController@index',                                              'as' => 'admin.users.index']);
+        Route::get('users/{id}/edit',                       ['uses' => 'UserController@edit',                                               'as' => 'admin.users.edit']);
+        Route::post('users',                                ['uses' => 'UserController@store',                                              'as' => 'admin.users.store']);
+        Route::put('users/{id}',                            ['uses' => 'UserController@update',                                             'as' => 'admin.users.update']);
+        Route::delete('users/{id}',                         ['uses' => 'UserController@destroy',                                            'as' => 'admin.users.destroy']);
     });
     Route::group(['before' => 'guest'], function(){
         Route::post('/login',                               ['uses' => 'AuthController@postLogin',                                          'as' => 'admin.auth.post_login']);

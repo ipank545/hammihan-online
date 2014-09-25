@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Laracasts\Commander\CommanderTrait;
+use Laracasts\Validation\FormValidationException;
+use Pardisan\Repositories\Exceptions\NotFoundException;
+use Pardisan\Repositories\Exceptions\RepositoryException;
 
 class BaseController extends \Controller {
 
@@ -118,6 +121,48 @@ class BaseController extends \Controller {
     protected function responseJson($data, $status = 200)
     {
         return Response::json($data, $status);
+    }
+
+    /**
+     * Because the act of deletion is repeatable we don't repeat ourselves
+     *
+     * @param $id
+     * @param $command
+     */
+    protected function generalDestroy($id, $command)
+    {
+        $id = (array) $id;
+        try {
+
+            $deleted = $this->execute($command, ['deleteables' => $id]);
+
+            return $this->redirectBack()->with(
+                'success_message',
+                $this->lang->get(
+                    'messages.success_deleting_items',
+                    ['count' => $deleted]
+                )
+            );
+
+        }catch (NotFoundException $e){
+
+            App::abort(404);
+
+        }catch (FormValidationException $e){
+
+            return $this->redirectBack()->withErrors($e->getErrors());
+
+        }catch(RepositoryException $e){
+
+            return $this->redirectBack()->with(
+                'error_message',
+                $this->lang->get(
+                    'messages.single_delete_relation_error',
+                    ['id' => $id[0] ]
+                )
+            );
+
+        }
     }
 
 }

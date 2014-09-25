@@ -56,6 +56,6 @@ class RepositoryWrapper implements RepositoryWrapperInterface
      */
     public function wrap(closure $job)
     {
-        $this->db->transaction($job);
+        return $this->db->transaction($job);
     }
 }
