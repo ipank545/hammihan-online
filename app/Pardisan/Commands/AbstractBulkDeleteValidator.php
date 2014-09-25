@@ -14,6 +14,6 @@ abstract class AbstractBulkDeleteValidator extends FormValidator
      */
     public function getValidationMessages()
     {
-        return ['required' => Lang::get('messages.roles.bulk_delete_required')];
+        return ['required' => Lang::get('messages.bulk_delete_required')];
     }
 } 

@@ -59,4 +59,17 @@ class RoleRepository extends AbstractRepository implements RoleRepositoryInterfa
             throw new UnableToUpdateException($e->getMessage());
         }
     }
+
+    /**
+     * Add roles to user
+     *
+     * @param $user
+     * @param $saveableRoles
+     * @return mixed
+     */
+    public function addRolesToUser(User $user, array $saveableRoles)
+    {
+        $user->roles->sync($saveableRoles);
+        return $user;
+    }
 }

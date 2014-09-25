@@ -37,4 +37,13 @@ interface RoleRepositoryInterface
      * @return mixed
      */
     public function updateById($id, array $data);
+
+    /**
+     * Add roles to user
+     *
+     * @param $user
+     * @param $saveableRoles
+     * @return mixed
+     */
+    public function addRolesToUser(User $user, array $saveableRoles);
 }
