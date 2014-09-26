@@ -1,7 +1,7 @@
 <div class="modal fade" id="articleEditModal" tabindex="-1" role="dialog" aria-labelledby="profileModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-         {{ Form::open(['route' => 'admin.articles.update', 'method' => 'put', 'class' => 'ajaxable-form article-update-form text-right', 'data-submit-btn' => '.update-form-submit'])  }}
+         {{ Form::open(['route' => 'admin.articles.update', 'method' => 'put', 'class' => 'article-update-form text-right',  'onSubmit' => 'return editValidation();'])  }}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
@@ -20,7 +20,7 @@
                         <div class="update-article-message-wrapper"></div>
                     </div>
                 </div>
-
+                    <div id="ed-response" style="color: #ff0000"></div>
                     <input type="hidden" id="article_update_id" name="id">
                     <div class="row">
                         <div class="col-sm-12">
@@ -46,7 +46,7 @@
                             </div>
                             <div class="control-group">
                                 <label> نویسنده یا گردآورنده</label>
-                                {{ Form::text('author', null, ['id' => 'ed_author', 'class' => 'form-control text-right']) }}
+                                {{ Form::text('author', null, ['id' => 'c', 'class' => 'form-control text-right']) }}
                             </div>
                             <label> قسمت کتگوری ها</label>
                             <div class="control-group">
@@ -109,3 +109,5 @@
         </div>
   </div>
 </div>
+
+

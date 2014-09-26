@@ -11,6 +11,7 @@
 
         <script type="text/javascript" src="{{asset('assets/tiny/jquery-2.1.1.js')}}"></script>
         <link rel="stylesheet" type="text/css" media="all" href="{{asset('assets/cal/css/theme.css')}}" title="Aqua" />
+
         <script type="text/javascript" src="{{asset('assets/cal/js/jalali.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/cal/js/calendar.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/cal/js/calendar-setup.js')}}"></script>

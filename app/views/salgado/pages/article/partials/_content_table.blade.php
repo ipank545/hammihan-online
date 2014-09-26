@@ -20,7 +20,7 @@
                     </td>
                     <td class="text-left"><code>{{ $article->important_title }}</code></td>
                     <td>{{ trans("{$article->author}") }}</td>
-                    <td>{{ $article->jalali_publish_date }}</td>
+                    <td>{{ $article->jalali_created_at }}</td>
                     <td style="text-align: left">
                         @include('salgado.pages.article.partials._index_operation')
                     </td>
