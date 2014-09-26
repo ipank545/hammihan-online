@@ -47,7 +47,7 @@ class Article extends Model {
      */
     public function states()
     {
-        return $this->belongsToMany('Pardisan\Models\State', 'article_states', 'state_id', 'article_id');
+        return $this->belongsToMany('Pardisan\Models\State', 'article_states', 'article_id', 'state_id');
     }
 
     /**
@@ -57,7 +57,7 @@ class Article extends Model {
      */
     public function articleUsers()
     {
-        return $this->belongsToMany('Pardisan\Models\User', 'article_states', 'user_id', 'article_id');
+        return $this->belongsToMany('Pardisan\Models\User', 'article_states', 'article_id', 'user_id');
     }
 
     /**

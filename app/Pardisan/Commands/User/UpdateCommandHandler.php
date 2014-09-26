@@ -2,6 +2,7 @@
 
 use Laracasts\Commander\CommandHandler;
 use Pardisan\Commands\AbstractCommandHandler;
+use Pardisan\Repositories\CategoryRepositoryInterface;
 use Pardisan\Repositories\RepositoryWrapperInterface;
 use Pardisan\Repositories\RoleRepositoryInterface;
 use Pardisan\Repositories\UserRepositoryInterface;
@@ -21,6 +22,11 @@ class UpdateCommandHandler extends AbstractCommandHandler implements CommandHand
     protected $roleRepo;
 
     /**
+     * @var CategoryRepositoryInterface
+     */
+    protected $catRepo;
+
+    /**
      * @var RepositoryWrapperInterface
      */
     protected $repoWrapper;
@@ -28,9 +34,13 @@ class UpdateCommandHandler extends AbstractCommandHandler implements CommandHand
     public function __construct(
         UserRepositoryInterface $userRepo,
         RoleRepositoryInterface $roleRepo,
-        RepositoryWrapperInterface $repoWrapper
+        RepositoryWrapperInterface $repoWrapper,
+        CategoryRepositoryInterface $catRepo
     ){
         $this->userRepo = $userRepo;
+        $this->roleRepo = $roleRepo;
+        $this->repoWrapper = $repoWrapper;
+        $this->catRepo = $catRepo;
     }
 
     /**
@@ -64,6 +74,7 @@ class UpdateCommandHandler extends AbstractCommandHandler implements CommandHand
             $this->repoWrapper->begin();
             $updated = $this->userRepo->updateById($userId, $userData);
             $updated = $this->addCommandRolesToUser($updated);
+            $updated = $this->addCommandCategoriesToUser($updated);
         }catch (\Exception $e){
             $this->repoWrapper->failure();
             throw $e;

@@ -6,7 +6,7 @@ session_start();
 define('LIBRARY_FOLDER_PATH','uploads/');
 
 /** Full URL to the folder that images will be used as library and upload. Include trailing slash and protocol (i.e. http://) */
-define('LIBRARY_FOLDER_URL', 'http://localhost:81/newss/assets/js/tinymce/plugins/image/uploads/');
+define('LIBRARY_FOLDER_URL', "http://localhost:8080/hammihan-online/public/assets/tiny/tinymce/plugins/image/uploads/");
 
 /** The extensions for to use in validation */
 define('ALLOWED_IMG_EXTENSIONS', 'gif,jpg,jpeg,png,jpe');

@@ -15,9 +15,8 @@ class NewCommand
         $user_name,
         $email,
         $voip_id,
-        $id,
         $phone,
-        $roles,
+        $roles = null,
         $password,
         $password_confirmation
     ){
@@ -25,9 +24,9 @@ class NewCommand
         $this->user_name = $user_name;
         $this->email = $email;
         $this->voip_id = $voip_id;
-        $this->id = $id;
         $this->phone = $phone;
+        $this->roles = $roles;
         $this->password = $password;
-        $this->password_confimation = $password_confirmation;
+        $this->password_confirmation = $password_confirmation;
     }
 } 

@@ -1,5 +1,8 @@
 <?php namespace Pardisan\Commands\User; 
 
+use Illuminate\Support\Facades\Hash;
+use Pardisan\Models\User;
+
 trait HandlerHelperTrait {
     /**
      * Get data needed for creating a new user
@@ -12,10 +15,11 @@ trait HandlerHelperTrait {
         $unsetables = ['password_confirmation', 'roles'];
 
         foreach($unsetables as $unset) {
-            if (isset($data[$unset])) unset($data[$unset]);
+            unset($data[$unset]);
         }
 
-        return $unsetables;
+        $data ['password'] = ! empty($data['password']) ? Hash::make($data['password']) : $data['password'];
+        return $data;
     }
 
     /**
@@ -31,15 +35,42 @@ trait HandlerHelperTrait {
         $command = $this->getCommand();
         $commandRoles = ! empty($command->roles) ? (array) $command->roles : false;
 
-        if (! $commandRoles) return $user;
-
         $saveableRoles = [];
-        foreach($availableRoles as $availableRole) {
-            if(in_array($availableRole->id, $commandRoles)){
-                $saveableRoles [] = $availableRole->id;
+
+        if ($commandRoles){
+            foreach($availableRoles as $availableRole) {
+                if(in_array($availableRole->id, $commandRoles)){
+                    $saveableRoles [] = $availableRole->id;
+                }
             }
         }
 
         return $this->roleRepo->addRolesToUser($user, $saveableRoles);
+    }
+
+    /**
+     * Add or sync command categories to user
+     *
+     * @param $user
+     * @return User
+     */
+    protected function addCommandCategoriesToUser($user)
+    {
+        $availableCats = $this->catRepo->getAll();
+
+        $command = $this->getCommand();
+        $commandCats = ! empty($command->categories) ? (array) $command->categories : false;
+
+        $saveableCats = [];
+
+        if ($commandCats){
+            foreach($availableCats as $cat){
+                if(in_array($cat->id, $commandCats)){
+                    $saveableCats [] = $cat->id;
+                }
+            }
+        }
+
+        return $this->catRepo->addCategoriesToUser($user, $saveableCats);
     }
 } 

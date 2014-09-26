@@ -16,7 +16,7 @@
                 <li class="{{ Menu::is('admin.dash.index') ? 'active' : '' }}"><a href="{{ URL::route('admin.dash.index')}} ">داشبورد</a></li>
                 <li class="{{ Menu::is('admin.permissions.index') ? 'active' : '' }}"><a href="{{ URL::route('admin.permissions.index') }}">مجوزهای کاربری</a></li>
                 <li class="{{ Menu::is('admin.roles.index') ? 'active' : '' }}"><a href="{{ URL::route('admin.roles.index') }}">نقش های کاربری</a></li>
-                <li><a href="#">مدیریت کاربران</a></li>
+                <li class="{{ Menu::is('admin.users.index') ? 'active' : '' }}"><a href="{{  URL::route('admin.users.index') }}">مدیریت کاربران</a></li>
             </ul>
             @if( ! Auth::check() )
             <div class="navbar-left call-to-action btn-group auth-buttons">

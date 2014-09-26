@@ -53,28 +53,67 @@ class ArticleController extends BaseController {
             'body',
             'publish_date',
             'status_id',
-            'author'
+            'author',
+            'category'
         );
 
         $input['user_id'] = Auth::user()->id;
 
-        try {
+return print_r($input);
+      //  try {
 
-            $created = $this->execute(
-                'Pardisan\Commands\Article\NewCommand',
-                $input
-            );
+      //      $created = $this->execute(
+      //          'Pardisan\Commands\Article\NewCommand',
+      //          $input
+      //     );
+//
+      //      return $this->responseJson($created, 200);
+//
+      //  }catch (RepositoryException $e){
+//
+      //      return $this->responseJson(['errors' => [[$this->lang->get('messages.repository_error')]]], 422);
+//
+      //  }catch (FormValidationException $e){
+//
+      //      return $this->responseJson(['errors' => $e->getErrors()], 422);
+//
+      // }
+    }
 
-            return $this->responseJson($created, 200);
+    public function update()
+    {
+        $updateData = $this->request->only(
+            'id',
+            'first_title',
+            'important_title',
+            'second_title',
+            'body',
+            'summary',
+            'author',
+            'publish_date',
+            'category'
+        );
 
-        }catch (RepositoryException $e){
+        $updateData[ 'status_id' ] = 1;
+        $updateData[ 'user_id' ] = Auth::user()->id;
+        print_r($updateData['id']);
+       // try {
 
-            return $this->responseJson(['errors' => [[$this->lang->get('messages.repository_error')]]], 422);
+          //  $article = $this->execute(
+          //      'Pardisan\Commands\Article\EditCommand',
+          //      $updateData
+         //   );
 
-        }catch (FormValidationException $e){
+         //   return $this->responseJson($article, 200);
 
-            return $this->responseJson(['errors' => $e->getErrors()], 422);
+      //  }catch (RepositoryException $e){
 
-        }
+      //      return $this->responseJson(['errors' => [[$this->lang->get('messages.repository_error')]]], 422);
+
+      //  }catch(FormValidationException $e){
+
+     //       return $this->responseJson(['errors' => $e->getErrors()], 422);
+
+     //   }
     }
 } 

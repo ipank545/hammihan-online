@@ -11,6 +11,7 @@ class NewCommand {
     public $status_id;
     public $author;
     public $user_id;
+    public $category;
 
 
     public function __construct(
@@ -20,9 +21,10 @@ class NewCommand {
         $summary,
         $body,
         $publish_date,
-        $status_id,
+        $status_id = null,
         $author,
-        $user_id
+        $user_id,
+        $category_id = null
     ){
         $this->first_title = $first_title;
         $this->second_title = $second_title;
@@ -33,6 +35,7 @@ class NewCommand {
         $this->status_id = $status_id;
         $this->author = $author;
         $this->user_id = $user_id;
+        $this->category_id = $category_id;
 
     }
 

@@ -27,7 +27,7 @@
             <legend><h4><b>اطلاعات کاربری</b></h4></legend>
             <div class="form-group">
                 {{ Form::label('user_name', 'نام کاربری' , ['class' => 'control-label']) }}
-                {{ Form::text('user_name', isset($user) ? $user->name : null, ['class' => 'form-control languageLeft', 'placeholder' => 'Example: user123']) }}
+                {{ Form::text('user_name', isset($user) ? $user->user_name : null, ['class' => 'form-control languageLeft', 'placeholder' => 'Example: user123']) }}
             </div>
 
             <div class="form-group">
@@ -48,8 +48,8 @@
         </fieldset>
 
         <fieldset>
-            <legend><h4><b>نقش های کاربری</b></h4></legend>
-            <label class="control-label">انتخاب کنید:</label>
+            <legend><h4><b>اطلاعات دسترسی</b></h4></legend>
+            <label class="control-label">نقش های کاربری</label>
             @foreach($roles as $role)
                 <div class="checkbox">
                     <label name="roles[{{ $role->id }}]">
@@ -58,10 +58,21 @@
                         @else
                             {{ $role->name }}
                         @endif
-                        {{ Form::checkbox("role[{$role->id}]", true, in_array($role->id, $userRoles)) }}
+                        {{ Form::checkbox("roles[{$role->id}]", $role->id, isset($userRoles) ? in_array($role->id, $userRoles) : false) }}
                     </label>
                 </div>
             @endforeach
+
+            <label class="control-label">دسته بندهای هایی کاربر</label>
+            @foreach($categories as $cat)
+                 <div class="checkbox">
+                    <label name="categories[{{ $cat->id }}]">
+                        {{ $cat->name }}
+                        {{ Form::checkbox("categories[{$cat->id}]", $cat->id, isset($userCategories) ? in_array($cat->id, $userCategories) : false) }}
+                    </label>
+                 </div>
+            @endforeach
+
         </fieldset>
         <br>
         <div class="form-group">

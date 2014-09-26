@@ -66,7 +66,12 @@ class UserRepository extends AbstractRepository implements UserRepositoryInterfa
     {
         try {
             $user = $this->model->newInstance()->findOrFail($userId);
-            $user->fill($userData);
+            $user->name = $userData['name'];
+            $user->user_name = $userData['user_name'];
+            $user->password = !empty($userData['password']) ? $userData['password'] : $user->password;
+            $user->voip_id = $userData['voip_id'];
+            $user->phone = $userData['phone'];
+            $user->email = $userData['email'];
             $user->save();
             return $user;
         }catch (ModelNotFoundException $e){

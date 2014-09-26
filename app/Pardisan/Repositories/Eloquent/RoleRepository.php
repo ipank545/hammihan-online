@@ -69,7 +69,7 @@ class RoleRepository extends AbstractRepository implements RoleRepositoryInterfa
      */
     public function addRolesToUser(User $user, array $saveableRoles)
     {
-        $user->roles->sync($saveableRoles);
+        $user->roles()->sync($saveableRoles);
         return $user;
     }
 }

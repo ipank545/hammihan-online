@@ -32,7 +32,7 @@ class State extends Eloquent
      */
     public function articles()
     {
-        return $this->belongsToMany('Pardisan\Models\Article', 'article_states', 'article_id', 'state_id');
+        return $this->belongsToMany('Pardisan\Models\Article', 'article_states', 'state_id', 'article_id');
     }
 
     /**
@@ -42,6 +42,14 @@ class State extends Eloquent
      */
     public function userStates()
     {
-        return $this->belongsToMany('Pardisan\Models\User', 'article_states', 'user_id', 'state_id');
+        return $this->belongsToMany('Pardisan\Models\User', 'article_states', 'state_id', 'user_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('Pardisan\Models\Role', 'role_states', 'state_id', 'role_id');
     }
 } 

@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Translation\Translator;
 use Laracasts\Commander\CommanderTrait;
 use Laracasts\Validation\FormValidationException;
-use Pardisan\Repositories\Exceptions\ArticleRepositoryInterface;
+use Pardisan\Repositories\ArticleRepositoryInterface;
+use Pardisan\Repositories\CategoryRepositoryInterface;
 use Pardisan\Repositories\Eloquent\ArticleRepository;
 use Symfony\Component\CssSelector\Exception\ExpressionErrorException;
 
-class ArticleController extends BaseController {
+class ArticleController extends BaseController
+{
 
     /**
      * @var Request
@@ -31,21 +33,27 @@ class ArticleController extends BaseController {
 
 
     protected $artcl;
+
     /**
      * @param Request $request
      * @param AuthManager $auth
      * @param Translator $lang
+     * @param ArticleRepositoryInterface $artcl
+     * @param CategoryRepositoryInterface $cateRepo
      */
     public function __construct(
         Request $request,
         AuthManager $auth,
         Translator $lang,
-        ArticleRepositoryInterface $artcl
-    ){
+        ArticleRepositoryInterface $artcl,
+        CategoryRepositoryInterface $cateRepo
+    )
+    {
         $this->request = $request;
         $this->auth = $auth;
         $this->lang = $lang;
         $this->artcl = $artcl;
+        $this->catRepo = $cateRepo;
     }
 
     /**
@@ -63,13 +71,13 @@ class ArticleController extends BaseController {
             'body',
             'publish_date',
             'status_id',
-            'author'
+            'author',
+            'category'
         );
-        
+
         $input['user_id'] = Auth::user()->id;
 
-
-         try {
+        try {
 
             $newArticle = $this->execute('Pardisan\Commands\Article\NewCommand', $input);
 
@@ -119,19 +127,41 @@ class ArticleController extends BaseController {
     public function delete($id)
     {
 
+        $id = (array)$id;
         try {
 
-            $this->execute('Pardisan\Commands\Article\DeleteCommand', ['id' => $id]);
+            $deleted = $this->execute(
+                'Pardisan\Commands\Article\DeleteCommand',
+                ['deleteables' => $id]
+            );
 
             return $this->redirectRoute('admin.articles.index')->with(
                 'success_message',
-                $this->lang->get('حذف با موفقیت انجام شد')   //I'm not sure about message
+                $this->lang->get('حذف با موفقیت انجام شد')
             );
+
+        } catch (NotFoundException $e) {
+
+            App::abort(404);
+
         } catch (FormValidationException $e) {
 
             return $this->redirectBack()->withErrors($e->getErrors());
+
+        } catch (RepositoryException $e) {
+
+            return $this->redirectBack()->with(
+                'error_message',
+                $this->lang->get(
+                    'messages.roles.single_delete_relation_error',
+                    ['article_id' => $id[0]]
+                )
+            );
+
         }
+
     }
+
 
     public function showAll()
     {
@@ -140,12 +170,63 @@ class ArticleController extends BaseController {
 
             $articles = $this->artcl->getAll();
 
-        return $this->view('salgado.pages.article.index')->with(
-                'articles',$articles
+            return $this->view('salgado.pages.article.index')->with(
+                'articles', $articles
             );
         } catch (FormValidationException $e) {
 
             return $this->redirectBack()->withErrors($e->getErrors());
         }
+    }
+
+    /**
+     * Delete a role from repo
+     *
+     * @return Redirect
+     */
+    public function bulkDelete()
+    {
+        $deletables = $this->request->input('selectable', []);
+
+        try {
+
+            $count = $this->execute(
+                'Pardisan\Commands\Article\DeleteCommand',
+                ['deleteables' => $deletables]
+            );
+
+            return $this->redirectRoute('admin.articles.index')->with(
+                'success_message',
+                $this->lang->get(
+                    'آیتم (ها)با موفقیت حذف شدند',
+                    ['count' => $count]
+                )
+            );
+
+        } catch (NotFoundException $e) {
+
+            App::abort(404);
+
+        } catch (FormValidationException $e) {
+
+            return $this->redirectBack()->withErrors($e->getErrors());
+
+        } catch (RepositoryException $e) {
+
+            return $this->redirectBack()->with(
+                'error_message',
+                $this->lang->get('messages.articles.bulk_delete_relation_error')
+            );
+
+        }
+    }
+
+    public function create()
+    {
+        $categories = $this->catRepo->getAll();
+        return $this->view(
+            'salgado.pages.article.create_update',
+            compact('categories')
+        );
     }
 } 

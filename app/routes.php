@@ -22,6 +22,13 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
             Route::put('users/me-update',                   ['uses' => 'UserController@profileUpdate',                                      'as' => 'admin.api.v1.users.profile_update']);
             Route::post('article_states',                   ['uses' => 'StateController@store',                                             'as' => 'admin.api.v1.article_states.store']);
             Route::put('article_states/{id}',               ['uses' => 'StateController@update',                                            'as' => 'admin.api.v1.article_states.update']);
+            Route::post('roles',                            ['uses' => 'RoleController@store',                                         'as' => 'admin.api.v1.roles.store']);
+
+            Route::post('articles',                         ['uses' => 'ArticleController@store',                                      'as' => 'admin.api.v1.articles.store']);
+
+            Route::put('users/me-update',                   ['uses' => 'UserController@profileUpdate',                                 'as' => 'admin.api.v1.users.profile_update']);
+
+            Route::put('articles/update',                   ['uses' => 'ArticleController@update',                                     'as' => 'admin.api.v1.articles.update']);
         });
         Route::get('/dash',                                 ['uses' => 'DashboardController@index',                                         'as' => 'admin.dash.index']);
         Route::get('/logout',                               ['uses' => 'AuthController@getLogout',                                          'as' => 'admin.auth.logout']);
@@ -50,6 +57,14 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
         Route::post('cats',                                 ['uses' => 'CategoryController@store',                                          'as' => 'admin.categories.store']);
         Route::put('cats/{id}',                             ['uses' => 'CategoryController@update',                                         'as' => 'admin.categories.update']);
         Route::delete('cats/{id}',                          ['uses' => 'CategoryController@destroy',                                        'as' => 'admin.categories.destroy']);
+        Route::get('articles',                              ['uses' => 'ArticleController@index',                                           'as' => 'admin.articles.index']);
+        Route::post('articles',                             ['uses' => 'ArticleController@store',                                           'as' => 'admin.articles.store']);
+        Route::get('articles/create',                       ['uses' => 'ArticleController@create',                                          'as' => 'admin.articles.create']);
+        Route::get('articles/{id}/edit',                    ['uses' => 'ArticleController@edit',                                            'as' => 'admin.articles.edit']);
+        Route::put('articles/{id}',                         ['uses' => 'ArticleController@update',                                          'as' => 'admin.articles.update']);
+        Route::delete('articles/{id}',                      ['uses' => 'ArticleController@destroy',                                         'as' => 'admin.articles.destroy']);
+        Route::get('role_states',                           ['uses' => 'StateController@getRoleStates',                                     'as' => 'admin.states.edit_role_states']);
+        Route::put('role_states',                           ['uses' => 'StateController@putRoleStates',                                     'as' => 'admin.states.update_role_states']);
     });
     Route::group(['before' => 'guest'], function(){
         Route::post('/login',                               ['uses' => 'AuthController@postLogin',                                          'as' => 'admin.auth.post_login']);
@@ -59,11 +74,12 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
 
 Route::group(['namespace' => 'Controllers'],function(){
     Route::get('cats/{id}',                                 ['uses' => 'CategoryController@show',                                           'as' => 'categories.show']);
+    Route::get('articles/{id}',                             ['uses' => 'ArticleController@show',                                            'as' => 'articles.show']);
 });
 
 Route::group(['namespace' => 'Controllers\Admin'],function() {
-    Route::get('/article', ['uses' => 'ArticleController@showAll', 'as' => 'admin.articles.index']);
-    Route::delete('article/{id}', ['uses' => 'ArticleController@delete', 'as' => 'admin.article.delete']);
-
+    Route::get('/article',                              ['uses' => 'ArticleController@showAll',                                         'as' => 'admin.articles.index']);
+    Route::delete('article/{id}',                       ['uses' => 'ArticleController@delete',                                          'as' => 'admin.article.delete']);
+    Route::delete('article',                            ['uses' => 'ArticleController@bulkDelete',                                        'as' => 'admin.articles.bulk_delete']);
 
 });

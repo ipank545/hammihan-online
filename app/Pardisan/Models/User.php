@@ -13,14 +13,14 @@ class User extends Eloquent  implements
     UserAclInterface
 {
 
-	use UserTrait, RemindableTrait, HasRole;
+    use UserTrait, RemindableTrait, HasRole;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 
     /**
      * Fillable attributes
@@ -29,12 +29,12 @@ class User extends Eloquent  implements
      */
     protected $guarded = ['persist_code', 'remember_token'];
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token', 'persist_code');
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = array('password', 'remember_token', 'persist_code');
 
     /**
      * User's identifier
@@ -43,7 +43,7 @@ class User extends Eloquent  implements
      */
     public function identifier()
     {
-        if (! is_null($this->name)) return $this->name;
+        if ( ! is_null($this->name)) return $this->name;
         return $this->user_name;
     }
 
@@ -64,7 +64,15 @@ class User extends Eloquent  implements
      */
     public function articlesStates()
     {
-        return $this->belongsToMany('Pardisan\Models\Article', 'article_states', 'article_id', 'user_id');
+        return $this->belongsToMany('Pardisan\Models\Article', 'article_states', 'user_id', 'article_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories()
+    {
+        return $this->belongsToMany('Pardisan\Models\Category', 'user_category', 'user_id', 'category_id');
     }
 
 }

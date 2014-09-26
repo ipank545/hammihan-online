@@ -134,6 +134,7 @@ return array(
         'old_password'  =>  'پسورد قدیمی',
         'machine_name'  =>  'نام ماشینی',
         'display_name'  =>  'نام',
-        'priority'      =>  'این مقدار اولویت'
+        'priority'      =>  'این مقدار اولویت',
+        'user_name' => 'نام کاربری'
     ),
 );

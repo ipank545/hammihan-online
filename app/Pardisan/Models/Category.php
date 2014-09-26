@@ -29,4 +29,12 @@ class Category extends Model
         return $this->hasMany('Pardisan\Models\Article', 'category_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany('Pardisan\Models\User', 'user_category', 'category_id', 'user_id');
+    }
+
 } 

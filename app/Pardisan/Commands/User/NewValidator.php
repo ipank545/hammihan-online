@@ -9,6 +9,7 @@ class NewValidator extends FormValidator
         'user_name' => 'required|unique:users,user_name|min:3|max:25',
         'email' =>  'required|email|unique:users,email',
         'phone' => 'min:6|max:20',
-        'roles' => 'integer_array'
+        'roles' => 'integer_array',
+        'password' => 'required|min:3|max:30|confirmed'
     ];
 } 

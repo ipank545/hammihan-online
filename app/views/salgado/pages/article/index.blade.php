@@ -1,4 +1,5 @@
 @extends('salgado.layouts.master')
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -15,14 +16,17 @@
             </div>
         </div>
     </div>
-
-    @include('salgado.pages.article.partials._index_modals')
 @stop
 
 @section('script')
     @parent
+    @include('salgado.pages.article.new_partials._script')
     <script type="text/javascript">
-        console.log({{ $articles  }});
+
     </script>
-    <script type="text/javascript" src="{{ asset('assets/JsLibs/Common.js') }}"></script>
 @stop
+
+@section('stylesheet')
+    @include('salgado.pages.article.new_partials._stylesheet')
+@stop
+

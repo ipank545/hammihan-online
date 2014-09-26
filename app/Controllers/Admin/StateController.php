@@ -8,6 +8,8 @@ use Illuminate\Translation\Translator;
 use Illuminate\View\View;
 use Laracasts\Validation\FormValidationException;
 use Pardisan\Repositories\Exceptions\NotFoundException;
+use Pardisan\Repositories\Exceptions\RepositoryException;
+use Pardisan\Repositories\RoleRepositoryInterface;
 use Pardisan\Repositories\StateRepositoryInterface;
 
 class StateController extends BaseController
@@ -28,18 +30,27 @@ class StateController extends BaseController
     protected $stateRepo;
 
     /**
+     * @var RoleRepositoryInterface
+     */
+    protected $roleRepo;
+
+    /**
      * @param Translator $lang
      * @param Request $request
      * @param StateRepositoryInterface $stateRepo
+     * @param RoleRepositoryInterface $roleRepo
      */
     public function __construct(
         Translator $lang,
         Request $request,
-        StateRepositoryInterface $stateRepo
-    ){
+        StateRepositoryInterface $stateRepo,
+        RoleRepositoryInterface $roleRepo
+    )
+    {
         $this->lang = $lang;
         $this->request = $request;
         $this->stateRepo = $stateRepo;
+        $this->roleRepo = $roleRepo;
     }
 
     /**
@@ -49,10 +60,10 @@ class StateController extends BaseController
      */
     public function index()
     {
-        $states= $this->stateRepo->getAll();
+        $states = $this->stateRepo->getAllWithRoles();
 
         return $this->view(
-            'admin.pages.state.index',
+            'salgado.pages.state.index',
             compact('states')
         );
     }
@@ -83,7 +94,7 @@ class StateController extends BaseController
                 $this->lang->get('messages.article_status.store_success', ['machine_name' => $created->machine_name])
             );
 
-        }catch (FormValidationException $e){
+        } catch (FormValidationException $e) {
 
             return $this->redirectBack()->withInput()->withErrors($e->getErrors());
 
@@ -107,7 +118,7 @@ class StateController extends BaseController
                 compact('state')
             );
 
-        }catch (NotFoundException $e){
+        } catch (NotFoundException $e) {
 
             App::abort(404);
 
@@ -135,11 +146,11 @@ class StateController extends BaseController
                 )
             );
 
-        }catch (NotFoundException $e){
+        } catch (NotFoundException $e) {
 
             App::abort(404);
 
-        }catch(FormValidationException $e){
+        } catch (FormValidationException $e) {
 
             return $this->redirectBack()->withInput()->withErrors($e->getErrors());
 
@@ -147,13 +158,46 @@ class StateController extends BaseController
     }
 
     /**
-     * Bulking update state priorities
+     * Bulk edit of states and roles
      *
-     * @return Redirect
+     * @return View
      */
-    public function bulkUpdate()
+    public function getRoleStates()
     {
+        $states = $this->stateRepo->getAllWithRoles();
+        $roles = $this->roleRepo->getAll();
+        $stateRoles = [];
 
+        foreach($states as $state){
+            $stateRoles[$state->id] = $state->roles->lists('name', 'id');
+        }
+        return $this->view(
+            'salgado.pages.state.role_state',
+            compact('states', 'roles', 'stateRoles')
+        );
     }
 
+    public function putRoleStates()
+    {
+        $roles = $this->request->get('roles',[]);
+
+        try {
+
+            $this->execute('Pardisan\Commands\State\RoleStateCommand', ['roles' => $roles]);
+
+            return $this->redirectRoute('admin.states.edit_role_states')->with(
+                'success_message',
+                $this->lang->get('messages.update_success')
+            );
+
+        }catch (RepositoryException $e){
+
+            return $this->redirectBack()->with(
+                'error_message',
+                $this->lang->get('messages.repository_error')
+            );
+
+        }
+
+    }
 } 

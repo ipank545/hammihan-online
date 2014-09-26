@@ -3,6 +3,7 @@
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
+use Pardisan\Exceptions\PardisanException;
 use Pardisan\Repositories\Eloquent\HelperTraits\DeleteTrait;
 use Pardisan\Repositories\Eloquent\HelperTraits\SearchTrait;
 use Pardisan\Repositories\Exceptions\InvalidArgumentException;
@@ -224,6 +225,7 @@ abstract class AbstractRepository {
      *
      * @param $method
      * @param $args
+     * @throws PardisanException
      * @return mixed
      */
     public function __call($method, $args)
@@ -233,5 +235,6 @@ abstract class AbstractRepository {
             $property = $this->getFindByProperty($method);
             return call_user_func_array([$this, 'findBy'], [$property, $args[0]]);
         }
+        throw new PardisanException("No method with name: [{$method}] found");
     }
 }

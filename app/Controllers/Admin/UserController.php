@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Translation\Translator;
 use Laracasts\Validation\FormValidationException;
+use Pardisan\Repositories\CategoryRepositoryInterface;
 use Pardisan\Repositories\Exceptions\NotFoundException;
 use Pardisan\Repositories\Exceptions\RepositoryException;
 use Pardisan\Repositories\RoleRepositoryInterface;
@@ -39,17 +40,20 @@ class UserController extends BaseController
      * @param Translator $lang
      * @param UserRepositoryInterface $userRepo
      * @param RoleRepositoryInterface $roleRepo
+     * @param CategoryRepositoryInterface $cateRepo
      */
     public function __construct(
         Request $request,
         Translator $lang,
         UserRepositoryInterface $userRepo,
-        RoleRepositoryInterface $roleRepo
+        RoleRepositoryInterface $roleRepo,
+        CategoryRepositoryInterface $cateRepo
     ){
         $this->request = $request;
         $this->lang = $lang;
         $this->userRepo = $userRepo;
         $this->roleRepo = $roleRepo;
+        $this->catRepo = $cateRepo;
     }
 
     /**
@@ -74,7 +78,9 @@ class UserController extends BaseController
      */
     public function create()
     {
-        return $this->view('salgado.pages.user.create_edit');
+        $roles = $this->roleRepo->getAll();
+        $categories = $this->catRepo->getAll();
+        return $this->view('salgado.pages.user.create_edit', compact('roles', 'categories'));
     }
 
     /**
@@ -90,9 +96,11 @@ class UserController extends BaseController
             $user = $this->userRepo->getUserWithRoles($id);
             $roles = $this->roleRepo->getAll();
             $userRoles = $user->roles->lists('id');
+            $userCategories = $this->catRepo->getUserCategories($user)->lists('id');
+            $categories = $this->catRepo->getAll();
             return $this->view(
                 'salgado.pages.user.create_edit',
-                compact('user', 'roles', 'userRoles')
+                compact('user', 'roles', 'userRoles', 'userCategories', 'categories')
             );
 
         }catch (NotFoundException $e){
@@ -114,13 +122,15 @@ class UserController extends BaseController
     /**
      * Storing a user in db
      *
+     * @throws RepositoryException
+     * @throws \Exception
      * @return Redirect
      */
     public function store()
     {
         try {
 
-            $stored = $this->execute('Pardisan\Commands\User\StoreCommand');
+            $stored = $this->execute('Pardisan\Commands\User\NewCommand');
 
             return $this->redirectRoute('admin.users.index')->with(
                 'success_message',
@@ -132,11 +142,11 @@ class UserController extends BaseController
             return $this->redirectBack()->withInput()->withErrors($e->getErrors());
 
         }catch(RepositoryException $e){
-
+            throw $e;
             return $this->redirectBack()->with(
                 'error_message',
                 $this->lang->get('messages.repository_error')
-            );
+            )->withInput();
 
         }
     }

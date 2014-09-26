@@ -1,5 +1,6 @@
 <?php namespace Pardisan\Repositories\Eloquent; 
 
+use Pardisan\Models\Role;
 use Pardisan\Models\State;
 use Pardisan\Repositories\StateRepositoryInterface;
 
@@ -25,5 +26,16 @@ class StateRepository extends AbstractRepository implements StateRepositoryInter
         $state->fill($data);
         $state->save();
         return $state;
+    }
+
+    public function getAllWithRoles()
+    {
+        return $this->model->newInstance()->with('roles')->orderBy('priority')->get();
+    }
+
+    public function addStatesToRole(Role $role, array $insertables)
+    {
+        $role->states()->sync($insertables);
+        return $role;
     }
 }

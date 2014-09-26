@@ -14,7 +14,8 @@
         "miladr/jalali": "dev-master",
         "laracasts/presenter": "0.1.*",
         "doctrine/dbal": "2.5.*@dev",
-        "bigsinoos/j-eloquent" : "dev-master"
+        "bigsinoos/j-eloquent" : "dev-master",
+        "intervention/image": "2.*"
     },
     "require-dev": {
         "doctrine/dbal": "2.5.*@dev",

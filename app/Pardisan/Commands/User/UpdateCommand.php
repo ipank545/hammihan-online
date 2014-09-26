@@ -17,7 +17,8 @@ class UpdateCommand {
         $voip_id,
         $id,
         $phone,
-        $roles,
+        $roles = null,
+        $categories = null,
         $password,
         $password_confirmation
     ){
@@ -27,7 +28,9 @@ class UpdateCommand {
         $this->voip_id = $voip_id;
         $this->id = $id;
         $this->phone = $phone;
+        $this->roles = $roles;
+        $this->categories = $categories;
         $this->password = $password;
-        $this->password_confimation = $password_confirmation;
+        $this->password_confirmation = $password_confirmation;
     }
 } 

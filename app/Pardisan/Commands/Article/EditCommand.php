@@ -3,6 +3,7 @@
 
 class EditCommand {
 
+    public $id;
     public $first_title;
     public $second_title;
     public $important_title;
@@ -15,25 +16,27 @@ class EditCommand {
 
 
     public function __construct(
-        $firstTitle,
-        $secondTitle,
-        $importantTitle,
+        $id,
+        $first_title,
+        $second_title,
+        $important_title,
         $summary,
         $body,
-        $publishDate,
+        $publish_date,
         $status_id,
         $author,
-        $userId
+        $user_id
     ){
-        $this->first_title = $firstTitle;
-        $this->second_title = $secondTitle;
-        $this->important_title = $importantTitle;
+        $this->id = $id;
+        $this->first_title = $first_title;
+        $this->second_title = $second_title;
+        $this->important_title = $important_title;
         $this->summary = $summary;
         $this->body = $body;
-        $this->publish_date = $publishDate;
+        $this->publish_date = $publish_date;
         $this->status_id = $status_id;
         $this->author = $author;
-        $this->user_id = $userId;
+        $this->user_id = $user_id;
 
     }
 

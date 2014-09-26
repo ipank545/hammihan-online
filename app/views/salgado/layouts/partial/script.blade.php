@@ -6,3 +6,4 @@
 @include('salgado.blocks._underscore_error_message')
 <script type="text/javascript" src="{{ asset('assets/JsLibs/Common.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/JsLibs/Salgado.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/tiny/imagemanager/js/mcimagemanager.js') }}"></script>

@@ -7,6 +7,14 @@ class Role extends EntrustRole
 {
     use PersianDateTrait;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function states()
+    {
+        return $this->belongsToMany('Pardisan\Models\State', 'role_states', 'role_id', 'state_id');
+    }
 
 } 

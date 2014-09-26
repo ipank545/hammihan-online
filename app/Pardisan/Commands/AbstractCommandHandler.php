@@ -9,6 +9,7 @@ abstract class AbstractCommandHandler
      */
     public $command;
 
+
     /**
      * Set command data
      *

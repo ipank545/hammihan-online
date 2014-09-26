@@ -2,6 +2,7 @@
 
 use Laracasts\Commander\CommandHandler;
 use Pardisan\Commands\AbstractCommandHandler;
+use Pardisan\Repositories\CategoryRepositoryInterface;
 use Pardisan\Repositories\RepositoryWrapperInterface;
 use Pardisan\Repositories\RoleRepositoryInterface;
 use Pardisan\Repositories\UserRepositoryInterface;
@@ -21,6 +22,11 @@ class NewCommandHandler extends AbstractCommandHandler implements CommandHandler
     protected $userRepo;
 
     /**
+     * @var CategoryRepositoryInterface
+     */
+    protected $catRepo;
+
+    /**
      * @var RoleRepositoryInterface
      */
     protected $roleRepo;
@@ -29,15 +35,18 @@ class NewCommandHandler extends AbstractCommandHandler implements CommandHandler
      * @param RepositoryWrapperInterface $repoWrapper
      * @param UserRepositoryInterface $userRepo
      * @param RoleRepositoryInterface $roleRepo
+     * @param CategoryRepositoryInterface $catRepo
      */
     public function __construct(
         RepositoryWrapperInterface $repoWrapper,
         UserRepositoryInterface $userRepo,
-        RoleRepositoryInterface $roleRepo
+        RoleRepositoryInterface $roleRepo,
+        CategoryRepositoryInterface $catRepo
     ){
         $this->repoWrapper = $repoWrapper;
         $this->userRepo = $userRepo;
         $this->roleRepo = $roleRepo;
+        $this->catRepo = $catRepo;
     }
 
     /**
@@ -65,6 +74,7 @@ class NewCommandHandler extends AbstractCommandHandler implements CommandHandler
 
             $createdUser = $this->userRepo->createRaw($this->getUserData());
             $createdUser = $this->addCommandRolesToUser($createdUser);
+            $createdUser = $this->addCommandCategoriesToUser($createdUser);
 
         }catch (\Exception $e){
 

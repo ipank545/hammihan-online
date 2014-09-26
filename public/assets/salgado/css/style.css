@@ -31,6 +31,9 @@ input[type="email"]:focus,
 input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
+input[type="textarea"]:focus,
+textarea:focus,
+.form-control:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
   border-color: #5e2d79;
@@ -429,3 +432,9 @@ a:hover, a:focus, a:active {
     margin-top : 10px;
     margin-bottom: 10px;
 }
+
+.mce-container span{
+    font-family: IranSansZ !important;
+}
+
+
