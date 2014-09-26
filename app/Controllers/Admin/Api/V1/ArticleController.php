@@ -59,26 +59,26 @@ class ArticleController extends BaseController {
 
         $input['user_id'] = Auth::user()->id;
 
-return print_r($input);
-      //  try {
 
-      //      $created = $this->execute(
-      //          'Pardisan\Commands\Article\NewCommand',
-      //          $input
-      //     );
-//
-      //      return $this->responseJson($created, 200);
-//
-      //  }catch (RepositoryException $e){
-//
-      //      return $this->responseJson(['errors' => [[$this->lang->get('messages.repository_error')]]], 422);
-//
-      //  }catch (FormValidationException $e){
-//
-      //      return $this->responseJson(['errors' => $e->getErrors()], 422);
-//
-      // }
+        try {
+            $created = $this->execute(
+                'Pardisan\Commands\Article\NewCommand',
+                $input
+           );
+
+            return $this->responseJson($created, 200);
+
+        }catch (RepositoryException $e){
+
+            return $this->responseJson(['errors' => [[$this->lang->get('messages.repository_error')]]], 422);
+
+        }catch (FormValidationException $e){
+
+            return $this->responseJson(['errors' => $e->getErrors()], 422);
+
+        }
     }
+
 
     public function update()
     {

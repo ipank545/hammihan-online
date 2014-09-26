@@ -22,7 +22,7 @@ class EditCommandHandler extends AbstractCommandHandler implements CommandHandle
     public function handle($command)
     {
         $this->setCommand($command);
-        $this->id = $this->getId();
+        $this->id = $command->id;
         return $this->articleRepo->editById($this->id, $this->getUpdateData());
     }
 
@@ -43,8 +43,8 @@ class EditCommandHandler extends AbstractCommandHandler implements CommandHandle
             'body'                 =>  $this->command->body,
             'publish_date'         =>  $this->command->publish_date,
             'status_id'            =>  $this->command->status_id,
-            'author'               =>  $this->command->author,
-            'category'             =>  $this->command->category
+            'author'               =>  $this->command->author
+          //  'user_id'              =>  $this->command->user_id
         ];
     }
 

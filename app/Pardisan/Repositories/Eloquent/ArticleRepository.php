@@ -13,7 +13,7 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
 
     public function createRaw(array $data){
 
-        return $this->model->newInstance()->create($data);
+        return $this->model->Create($data);
     }
 
     public function editById($id, $data){
@@ -27,14 +27,14 @@ class ArticleRepository extends AbstractRepository implements ArticleRepositoryI
         $updateable->publish_date = $data['publish_date'];
         $updateable->status_id = $data['status_id'];
         $updateable->author = $data['author'];
-        $updateable->user_id = $data['user_id'];
+     //   $updateable->user_id = $data['user_id'];
 
         $updateable->save();
     }
 
 
     public function getAll(){
-        $disply = $this->model->all();
+        $disply = $this->model->orderBy('id','desc')->paginate(15);
         return $disply;
     }
 }

@@ -131,6 +131,9 @@ return array(
         "available" => "موجود",
         "size" => "اندازه",
         'identifier'    =>  'شناسه کابری',
-        'old_password'  =>  'پسورد قدیمی'
+        'old_password'  =>  'پسورد قدیمی',
+        'machine_name'  =>  'نام ماشینی',
+        'display_name'  =>  'نام',
+        'priority'      =>  'این مقدار اولویت'
     ),
 );

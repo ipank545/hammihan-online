@@ -1,6 +1,7 @@
 <div class="modal fade" id="articleEditModal" tabindex="-1" role="dialog" aria-labelledby="profileModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+         {{ Form::open(['route' => 'admin.articles.update', 'method' => 'put', 'class' => 'ajaxable-form article-update-form text-right', 'data-submit-btn' => '.update-form-submit'])  }}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
@@ -19,7 +20,7 @@
                         <div class="update-article-message-wrapper"></div>
                     </div>
                 </div>
-                {{ Form::open(['route' => 'admin.api.v1.articles.update', 'method' => 'put', 'class' => 'ajaxable-form article-update-form disable-submit text-right', 'data-submit-btn' => '.update-form-submit'])  }}
+
                     <input type="hidden" id="article_update_id" name="id">
                     <div class="row">
                         <div class="col-sm-12">
@@ -84,11 +85,11 @@
                         </div>
                     </div>
                     <br>
-                {{ Form::close() }}
+
             </div>
             <div class="modal-footer">
                 <button
-                    type="button"
+                    type="submit"
                     class="btn btn-primary pull-right article-update-form-submit"
                     onclick=""
                 >
@@ -104,6 +105,7 @@
                     بستن
                 </button>
             </div>
+            {{ Form::close() }}
         </div>
   </div>
 </div>

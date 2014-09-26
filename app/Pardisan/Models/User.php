@@ -47,4 +47,24 @@ class User extends Eloquent  implements
         return $this->user_name;
     }
 
+    /**
+     * User articles
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function articles()
+    {
+        return $this->hasMany('Pardisan\Models\Article', 'user_id');
+    }
+
+    /**
+     * Articles that user has touched
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function articlesStates()
+    {
+        return $this->belongsToMany('Pardisan\Models\Article', 'article_states', 'article_id', 'user_id');
+    }
+
 }

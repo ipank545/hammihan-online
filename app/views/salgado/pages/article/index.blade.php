@@ -52,23 +52,14 @@
                  $("#se_title").val(sec);
                  $("#ed_summary").val(sum);
                  $("#ed_author").val(aut);
-                 $("#ed_publish_date").val(pdt);
+                 $("#date_input_2").val(pdt);
                  $("#ed_category").val(cat);
               tinymce.editors[0].setContent(bod);
-              console.log(tinyMCE.activeEditor.getContent());
+
              });
     </script>
 
-    <script type="text/javascript">
 
-             $(".article-update-form-submit").click(function(e){
-                 console.log('hiiii');
-                 var messageContainer = $(".update-article-message-wrapper");
-                 var formWrapper = $("#articleEditModal .modal-body");
-                 var form = $(".ajaxable-form.article-update-form");
-                 Salgado.ajaxForm(form, messageContainer, formWrapper, $(this));
-             });
-    </script>
 
     <script type="text/javascript">
         Calendar.setup({

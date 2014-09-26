@@ -1,11 +1,7 @@
 <?php namespace Pardisan\Commands\Role; 
 
-class BulkDeleteCommand
-{
-    public $deleteables;
+use Pardisan\Commands\AbstractBulkDeleteCommand;
 
-    public function __construct($deleteables)
-    {
-        $this->deleteables = $deleteables;
-    }
+class BulkDeleteCommand extends AbstractBulkDeleteCommand
+{
 } 

@@ -1,6 +1,7 @@
 <div class="modal fade" id="createModal" tabindex="-1"  role="dialog" aria-labelledby="createModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+         {{ Form::open(['route' => 'admin.articles.store', 'class' => 'ajaxable-form article-form', 'name' => 'myform', 'id' => 'article_create_form', 'onsubmit' => 'return createValidation();' ])  }}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">
@@ -16,7 +17,7 @@
                         <div class="article-create-message-wrapper"></div>
                     </div>
                 </div>
-                {{ Form::open(['route' => 'admin.api.v1.articles.store', 'class' => 'ajaxable-form article-form', 'name' => 'myform'])  }}
+                    <div id="response" style="color: #ff0000"></div>
                     <div class="row">
                         <div class="col-sm-12">
                              <div class="control-group">
@@ -25,7 +26,7 @@
                              </div>
                             <div class="control-group">
                                 <label> تیتر اصلی</label>
-                                {{ Form::text('important_title', null, ['class' => 'form-control text-left languageLeft']) }}
+                                {{ Form::text('important_title', null, ['id' => 'imp_title', 'class' => 'form-control text-left languageLeft']) }}
                             </div>
                             <div class="control-group">
                                 <label> تیتر فرعی پایین</label>
@@ -37,11 +38,11 @@
                             </div>
                             <div class="control-group">
                                 <label>خلاصه خبر </label>
-                                {{ Form::textarea('summary', null, ['class' => 'form-control text-left languageLeft ', 'row' => '2']) }}
+                                {{ Form::textarea('summary', null, ['id' => 'sumry', 'class' => 'form-control text-left languageLeft ', 'row' => '2']) }}
                             </div>
                             <div class="control-group">
                                 <label> نویسنده یا گردآورنده</label>
-                                {{ Form::text('author', null, ['class' => 'form-control text-left languageLeft']) }}
+                                {{ Form::text('author', null, ['id' => 'authr', 'class' => 'form-control text-left languageLeft']) }}
                             </div>
                             <div class="control-group">
                                 <label>بر چسب ها</label>
@@ -80,7 +81,7 @@
 
                             <div class="control-group">
                                 <label>تصویر کوچک به اندازه 60*80</label>
-                                 {{Form::text('small_pic_url','',['class'=>'form-control text-left languageLeft','name'=>'small_pic_url','id'=>'small_pic_url'])}}
+                                 {{Form::text('small_pic_url','',['id' => 'sm_pic_url', 'class'=>'form-control text-left languageLeft','name'=>'small_pic_url','id'=>'small_pic_url'])}}
                                  <label><a href="javascript:mcImageManager.open('myform','small_pic_url');" style="text-decoration:none;">[برای ارسال با انتخاب تصویر کوچک کلیک کنید]</a></label>
                             </div>
                             <div class="control-group">
@@ -100,13 +101,14 @@
                         </div>
                     </div>
                     <br>
-               {{ Form::close() }}
+
             </div>
             <div class="modal-footer">
                 <button
-                    type="button"
+                    type="submit"
                     class="btn btn-primary pull-right article-form-submit"
                     onclick=""
+                    name="btnSubmit"
                 >
                     <span class="glyphicon glyphicon-plus"></span>
 ایجاد خبر جدید
@@ -120,6 +122,7 @@
                     بستن
                 </button>
             </div>
+         {{ Form::close() }}
         </div>
     </div>
 </div>
@@ -146,12 +149,73 @@
             </ul>
         </div>
     </script>
-    <script type="text/javascript">
-        $(".article-form-submit").click(function(e){
-            var messageContainer = $(".article-create-message-wrapper");
-            var formWrapper = $("#createModal .modal-body");
-            var form = $(".ajaxable-form.article-form");
-            Salgado.ajaxForm(form, messageContainer, formWrapper, $(this))
-        });
-    </script>
+   //<script type="text/javascript">
+   //    $(".article-form-submit").click(function(e){
+   //       var dd=(tinyMCE.activeEditor.getContent());
+   //       var messageContainer = $(".article-create-message-wrapper");
+   //       var formWrapper = $("#createModal .modal-body");
+   //       var form = $(".ajaxable-form.article-form");
+//
+   //      Salgado.ajaxForm(form, messageContainer, formWrapper, $(this))
+   //    });
+   //</script>
+
+   <script type="text/javascript">
+                function createValidation(){
+
+               var bool = true;
+
+               var response = '';
+               var important_title = document.getElementById('imp_title').value;
+               var summary = document.getElementById('sumry').value;
+               var author = document.getElementById('authr').value;
+               var small_pic_url = document.getElementById('sm_pic_url').value;
+               var publish_date = document.getElementById('date_input_1').value;
+               var body = tinyMCE.activeEditor.getContent();
+
+
+               if (important_title == '') {
+
+                   response = 'وارد کردن تیتر اصلی الزامی است  </br>';
+
+                   bool = false;
+               }
+               if (summary == '') {
+
+                   response += 'وارد کردن فیلد خلاصه خبر الزامی است</br>';
+
+                   bool = false;
+               }
+               if (body == '') {
+
+                   response += 'لطفا متن خبر را وارد کنید</br>';
+                   bool = false;
+               }
+               if (small_pic_url == '') {
+
+                   response += 'لطفا برای خبر تصویر انتخاب کنید</br>';
+
+                   bool = false;
+               }
+               if (author == '') {
+
+                   response += 'لطفا نام نویسنده را وارد کنید</br>';
+
+                   bool = false;
+               }
+               if (publish_date == '') {
+
+                   response += 'لطفا زمان انتشار را تعیین نمایید  </br>';
+
+                   bool = false;
+               }
+
+                $('#response').html(response).fadeIn('slow');
+               // alert(body);
+               return bool;
+
+      }
+
+   </script>
+
 @stop

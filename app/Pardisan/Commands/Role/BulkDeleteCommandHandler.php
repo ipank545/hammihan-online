@@ -1,10 +1,10 @@
 <?php namespace Pardisan\Commands\Role; 
 
 use Laracasts\Commander\CommandHandler;
-use Pardisan\Commands\AbstractCommandHandler;
+use Pardisan\Commands\AbstractBulkDeleteCommandHandler;
 use Pardisan\Repositories\RoleRepositoryInterface;
 
-class BulkDeleteCommandHandler extends AbstractCommandHandler implements CommandHandler
+class BulkDeleteCommandHandler extends AbstractBulkDeleteCommandHandler implements CommandHandler
 {
     protected $roleRepo;
 
@@ -14,14 +14,8 @@ class BulkDeleteCommandHandler extends AbstractCommandHandler implements Command
         $this->roleRepo = $roleRepo;
     }
 
-    /**
-     * Handle the command
-     *
-     * @param $command
-     * @return mixed
-     */
-    public function handle($command)
+    protected function getRepo()
     {
-        return $this->roleRepo->bulkDelete($command->deleteables);
+        return $this->roleRepo;
     }
 }

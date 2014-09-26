@@ -2,17 +2,21 @@
 
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
+use Pardisan\Repositories\Eloquent\HelperTraits\DeleteTrait;
+use Pardisan\Repositories\Eloquent\HelperTraits\SearchTrait;
 use Pardisan\Repositories\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Model;
 use Pardisan\Repositories\Exceptions\RepositoryException;
-use Pardisan\Repositories\Exceptions\RepositoryRelationException;
 
 abstract class AbstractRepository {
+
+    use SearchTrait;
+    use DeleteTrait;
 
     /**
      * @var Model
      */
-    public $model;
+    protected $model;
 
     /**
      * @param Model $model
@@ -20,110 +24,6 @@ abstract class AbstractRepository {
     public function __construct(Model $model)
     {
         $this->model = $model;
-    }
-
-    /**
-     * @author bigsinoos <pcfeeler@gmail.com>
-     * Add the ability to find by property
-     *
-     * @param $method
-     * @param $args
-     * @return mixed
-     */
-    public function __call($method, $args)
-    {
-        if ($this->isFindable($method))
-        {
-            $property = $this->getFindByProperty($method);
-            return call_user_func_array([$this, 'findBy'], [$property, $args[0]]);
-        }
-    }
-
-    /**
-     * @author bigsinoos <pcfeeler@gmail.com>
-     * Find a model by property
-     *
-     * @param $property
-     * @param $value
-     * @throws NotFoundException
-     * @throws RepositoryException
-     * @return static
-     */
-    public function findBy ($property, $value)
-    {
-        $model = $this->model->newInstance();
-        try {
-            $model = $model->where($property,'=',$value)->first();
-        }catch (QueryException $e){
-            throw new RepositoryException($e->getMessage());
-        }
-        if (is_null($model))
-        {
-            throw new NotFoundException("No model with {$property} = {$value} found");
-        }
-        return $model;
-    }
-
-    /**
-     * @author bigsinoos <pcfeeler@gmail.com>
-     * Check that if a magic method argument is findable or not
-     *
-     * @param $method
-     * @return bool
-     */
-    private function isFindable($method)
-    {
-        if (Str::startsWith($method, 'findBy'))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * @author bigsinoos <pcfeeler@gmail.com>
-     * Get property from findBy magic method
-     *
-     * @param $method
-     * @return mixed
-     */
-    private function getFindByProperty($method)
-    {
-        return strtolower(str_replace('findBy','',$method));
-    }
-
-    /**
-     * Delete an item from Repository
-     *
-     * @param $id
-     * @throws NotFoundException
-     * @return bool|null
-     */
-    public function delete($id)
-    {
-        $model = $this->model->newInstance();
-        $model = $model->find($id);
-        if(is_null($model)){
-            throw new NotFoundException("Not item with id : [{$id}] found");
-        }
-        return $model->delete();
-    }
-
-    /**
-     * Find a user in DB based on ID
-     *
-     * @param $id
-     * @throws NotFoundException
-     * @return \Illuminate\Support\Collection|static
-     */
-    public function findById($id)
-    {
-        $model = $this->model->newInstance();
-        $model = $model->find($id);
-        if(is_null($model)){
-            throw new NotFoundException("No Item with id : [{$id}] found");
-        }
-        return $model;
     }
 
     /**
@@ -139,35 +39,6 @@ abstract class AbstractRepository {
         } catch (QueryException $e) {
             throw new RepositoryException($e->getMessage());
         }
-    }
-
-    /**
-     * Delete a model with instance of model given
-     *
-     * @param Model $model
-     * @throws RepositoryException
-     * @throws \Exception
-     */
-    public function deleteByModel(Model $model)
-    {
-        try {
-            $model->delete();
-            return $model;
-        }catch (QueryException $e) {
-            throw new RepositoryException($e->getMessage());
-        }
-    }
-
-    /**
-     * Delete an eloquent model based on id
-     *
-     * @param $id
-     * @throws NotFoundException
-     * @return bool|null
-     */
-    public function deleteById($id)
-    {
-        return $this->delete($id);
     }
 
     /**
@@ -202,19 +73,61 @@ abstract class AbstractRepository {
     }
 
     /**
-     * @author bigsinoos <pcfeeler@gmail.com>
-     * Add simple wheres to the query
+     * Get all
      *
-     * @param $q
-     * @param array $queries
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function getAll()
+    {
+        return $this->model->newInstance()->all();
+    }
+
+    /**
+     * Get paginated items
+     *
+     * @param int $perPage
      * @return mixed
      */
-    protected function addSimpleWheres($q, array $queries)
+    public function getPaginated($perPage = 15)
     {
-        foreach($queries as $key => $value){
-            $q = $q->where($key, $value);
+        return $this->getSearcheableQuery()->paginate($perPage);
+    }
+
+    /**
+     * Find a user in DB based on ID
+     *
+     * @param $id
+     * @throws NotFoundException
+     * @return \Illuminate\Support\Collection|static
+     */
+    public function findById($id)
+    {
+        return $this->findBy('id', $id);
+    }
+
+    /**
+     * @author bigsinoos <pcfeeler@gmail.com>
+     * Find a model by property
+     *
+     * @param $property
+     * @param $value
+     * @throws NotFoundException
+     * @throws RepositoryException
+     * @return static
+     */
+    public function findBy ($property, $value)
+    {
+        $model = $this->model->newInstance();
+        try {
+            $model = $model->where($property,'=',$value)->first();
+        }catch (QueryException $e){
+            throw new RepositoryException($e->getMessage());
         }
-        return $q;
+        if (is_null($model))
+        {
+            throw new NotFoundException("No model with {$property} = {$value} found");
+        }
+        return $model;
     }
 
     /**
@@ -246,32 +159,63 @@ abstract class AbstractRepository {
     }
 
     /**
-     * Delete by multiple ids
+     * @author bigsinoos <pcfeeler@gmail.com>
+     * Add simple wheres to the query
      *
-     * @param array $deleteables
-     * @throws RepositoryRelationException
-     * @return int
+     * @param $q
+     * @param array $queries
+     * @return mixed
      */
-    public function bulkDelete(array $deleteables)
+    protected function addSimpleWheres($q, array $queries)
     {
-        try {
-            if (! empty($deleteables)){
-                return $this->model->newInstance()->whereIn('id', $deleteables)->delete();
-            }
-        }catch (QueryException $e){
-            $err = new RepositoryRelationException();
-            $err->setDriverException($e);
-            throw new RepositoryRelationException($err->getDriverErrorMessage());
+        foreach($queries as $key => $value){
+            $q = $q->where($key, $value);
         }
+        return $q;
     }
 
     /**
-     * Get all
+     * @author bigsinoos <pcfeeler@gmail.com>
+     * Get property from findBy magic method
      *
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     * @param $method
+     * @return mixed
      */
-    public function getAll()
+    private function getFindByProperty($method)
     {
-        return $this->model->newInstance()->all();
+        return strtolower(str_replace('findBy','',$method));
+    }
+
+    /**
+     * @author bigsinoos <pcfeeler@gmail.com>
+     * Check that if a magic method argument is findable or not
+     *
+     * @param $method
+     * @return bool
+     */
+    private function isFindable($method)
+    {
+        if (Str::startsWith($method, 'findBy'))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @author bigsinoos <pcfeeler@gmail.com>
+     * Add the ability to find by property
+     *
+     * @param $method
+     * @param $args
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        if ($this->isFindable($method))
+        {
+            $property = $this->getFindByProperty($method);
+            return call_user_func_array([$this, 'findBy'], [$property, $args[0]]);
+        }
     }
 }

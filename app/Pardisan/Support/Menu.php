@@ -16,7 +16,6 @@ class Menu
 
     public function is($what)
     {
-        \Log::info($what);
         return $what == $this->currentRouteName ? true : false;
     }
 } 

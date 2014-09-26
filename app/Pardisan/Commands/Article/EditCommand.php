@@ -24,8 +24,8 @@ class EditCommand {
         $body,
         $publish_date,
         $status_id,
-        $author,
-        $user_id
+        $author
+       // $user_id
     ){
         $this->id = $id;
         $this->first_title = $first_title;
@@ -36,7 +36,7 @@ class EditCommand {
         $this->publish_date = $publish_date;
         $this->status_id = $status_id;
         $this->author = $author;
-        $this->user_id = $user_id;
+      //  $this->user_id = $user_id;
 
     }
 
