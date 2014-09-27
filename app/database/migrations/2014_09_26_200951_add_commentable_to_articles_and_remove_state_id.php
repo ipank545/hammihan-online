@@ -12,7 +12,10 @@ class AddCommentableToArticlesAndRemoveStateId extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::table('articles', function(Blueprint $t){
+            $t->boolean('commentable')->after('user_id')->default(1);
+            $t->dropColumn('status_id');
+        });
 	}
 
 	/**
@@ -22,7 +25,10 @@ class AddCommentableToArticlesAndRemoveStateId extends Migration {
 	 */
 	public function down()
 	{
-		//
+        Schema::table('articles', function(Blueprint $t){
+            $t->dropColumn('commentable');
+            $t->unsignedInteger('status_id')->nullable();
+        });
 	}
 
 }

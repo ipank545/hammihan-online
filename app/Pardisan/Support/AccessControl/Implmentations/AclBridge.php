@@ -1,6 +1,8 @@
 <?php namespace Pardisan\Support\AccessControl\Implementations; 
 
+use Illuminate\Auth\AuthManager;
 use Pardisan\Models\User;
+use Pardisan\Repositories\UserRepositoryInterface;
 use Pardisan\Support\AccessControl\Contracts\AccessControlInterface;
 use Pardisan\Support\AccessControl\Contracts\BridgeInterface;
 
@@ -14,7 +16,7 @@ class AclBridge implements BridgeInterface
     /**
      * @var array admin users
      */
-    protected $adminUsers = ['bigsinoos'];
+    protected $adminUsers = ['pcfeeler@gmail.com'];
 
     /**
      * User to check access against
@@ -29,15 +31,23 @@ class AclBridge implements BridgeInterface
     protected $userRepo;
 
     /**
+     * @var AuthManager
+     */
+    protected $auth;
+
+    /**
      * @param UserRepositoryInterface $userRepo
+     * @param AuthManager $auth
      * @param AccessControlInterface $boss
      */
     public function __construct(
         UserRepositoryInterface $userRepo,
+        AuthManager $auth,
         AccessControlInterface $boss
     ){
         $this->userRepo = $userRepo;
         $this->boss = $boss;
+        $this->auth = $auth;
     }
 
     /**
@@ -100,7 +110,6 @@ class AclBridge implements BridgeInterface
         foreach($this->user->roles as $role){
             if (in_array($role->name, $this->getAdminRoles())) return true;
         }
-
         return false;
     }
 

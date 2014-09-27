@@ -17,6 +17,7 @@ class CreateArticleStatesTable extends Migration {
             $t->bigIncrements('id')->unsigned();
 
             $t->unsignedBigInteger('article_id');
+            $t->unsignedInteger('state_id')->nullable();
             $t->unsignedInteger('user_id');
 
             $t->boolean('last')->default(1);
@@ -29,6 +30,7 @@ class CreateArticleStatesTable extends Migration {
         Schema::table('article_states',function(Blueprint $t){
             $t->foreign('article_id')->references('id')->on('articles');
             $t->foreign('user_id')->references('id')->on('users');
+            $t->foreign('state_id')->references('id')->on('states')->onDelete('set null');
         });
 	}
 
@@ -42,6 +44,7 @@ class CreateArticleStatesTable extends Migration {
 		Schema::drop('article_states', function(Blueprint $t){
             $t->dropForeign('article_states_user_id_foreign');
             $t->dropForeign('article_states_article_id_foreign');
+            $t->dropForeign('article_states_state_id_foreign');
         });
 	}
 

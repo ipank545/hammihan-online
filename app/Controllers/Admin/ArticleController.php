@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Translation\Translator;
+use Intervention\Image\Exception\NotFoundException;
 use Laracasts\Commander\CommanderTrait;
 use Laracasts\Validation\FormValidationException;
 use Pardisan\Repositories\ArticleRepositoryInterface;
 use Pardisan\Repositories\CategoryRepositoryInterface;
 use Pardisan\Repositories\Eloquent\ArticleRepository;
+use Pardisan\Repositories\StateRepositoryInterface;
+use Pardisan\Support\AccessControl\Contracts\BridgeInterface;
 use Symfony\Component\CssSelector\Exception\ExpressionErrorException;
 
 class ArticleController extends BaseController
@@ -31,8 +34,15 @@ class ArticleController extends BaseController
      */
     protected $lang;
 
+    /**
+     * @var StateRepositoryInterface
+     */
+    protected $stateRepo;
+
 
     protected $artcl;
+
+    protected $control;
 
     /**
      * @param Request $request
@@ -40,13 +50,17 @@ class ArticleController extends BaseController
      * @param Translator $lang
      * @param ArticleRepositoryInterface $artcl
      * @param CategoryRepositoryInterface $cateRepo
+     * @param StateRepositoryInterface $stateRepo
+     * @param BridgeInterface $control
      */
     public function __construct(
         Request $request,
         AuthManager $auth,
         Translator $lang,
         ArticleRepositoryInterface $artcl,
-        CategoryRepositoryInterface $cateRepo
+        CategoryRepositoryInterface $cateRepo,
+        StateRepositoryInterface $stateRepo,
+        BridgeInterface $control
     )
     {
         $this->request = $request;
@@ -54,6 +68,8 @@ class ArticleController extends BaseController
         $this->lang = $lang;
         $this->artcl = $artcl;
         $this->catRepo = $cateRepo;
+        $this->stateRepo = $stateRepo;
+        $this->control = $control;
     }
 
     /**
@@ -70,9 +86,13 @@ class ArticleController extends BaseController
             'summary',
             'body',
             'publish_date',
-            'status_id',
+            'state_id',
             'author',
-            'category'
+            'category_id',
+            'commentable',
+            'thumb_image',
+            'large_image',
+            'tags'
         );
 
         $input['user_id'] = Auth::user()->id;
@@ -95,7 +115,7 @@ class ArticleController extends BaseController
 
     }
 
-    public function edit($id)
+    public function update($id)
     {
         $update_input = $this->request->only(
             'first_title',
@@ -221,12 +241,41 @@ class ArticleController extends BaseController
         }
     }
 
+    /**
+     * Create a new article form
+     *
+     * @return View
+     */
     public function create()
     {
-        $categories = $this->catRepo->getAll();
+        $user = $this->auth->user();
+        if ($this->control->canByPass()){
+            $categories = $this->catRepo->getAll();
+            $states = $this->stateRepo->getAll();
+        }else {
+            $categories = $this->catRepo->loadUserAvailableCats($user);
+            $states =  $this->stateRepo->loadUserAvailableStates($user);
+        }
         return $this->view(
             'salgado.pages.article.create_update',
-            compact('categories')
+            compact('categories', 'states')
         );
+    }
+
+    public function edit($id)
+    {
+        $user = $this->auth->user();
+        try {
+            $article = $this->artcl->findById($id);
+            if ($this->control->canByPass()){
+                $categories = $this->catRepo->getAll();
+                $states = $this->stateRepo->getAll();
+            }else {
+                $categories = $this->catRepo->loadUserAvailableCats($user);
+                $states =  $this->stateRepo->loadUserAvailableStates($user);
+            }
+        }catch(NotFoundException $e){
+
+        }
     }
 } 

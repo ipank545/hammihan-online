@@ -79,3 +79,9 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+function image_asset($img, $style){
+    if (empty($img)) return asset('assets/no_image.jpg');
+    $name = last(explode('/', $img));
+    return asset(str_replace($name, $style . $name, $img));
+}

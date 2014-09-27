@@ -14,4 +14,9 @@ interface CategoryRepositoryInterface {
     public function getUserCategories(User $user);
 
     public function addCategoriesToUser(User $user, array $categories);
+
+    public function loadUserAvailableCats(User $user);
+
+    public function loadCatsByName(array $cats);
+
 }

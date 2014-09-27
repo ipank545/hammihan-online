@@ -1,0 +1,1110 @@
+﻿
+/*.col-md-9, .col-lg-9,.col-md-6, .col-lg-6,.col-md-3, .col-lg-3,*/ ul, li, a, im, p, h1, h2, h3, h4, h5, h6{
+    margin:0;
+    padding:0;
+    outline:0;
+}
+.col, ul, li, a, im, p, h1, h2, h3, h4, h5, h6{
+    margin:0;
+    padding:0;
+}
+.carousel-caption a {
+    color:white;
+        text-decoration:none;
+
+}
+.carousel-caption  a:hover {
+    color:white;
+}
+
+ .caption a {
+        color:black;
+        text-decoration:none;
+    }
+ .caption a:hover {
+        color:black;
+    }
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, , ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+body {
+    direction: rtl;
+    font-family: 'B Mitra';
+    font-size: 16px;
+    font-weight: 100;
+    height: auto;
+    background-image: url(images/patern.png);
+    background-repeat: repeat;
+}
+/*min size css*/
+
+
+/*padding margin  css*/
+.ml10 {
+    margin-left: 10px;
+}
+.mt6 {
+    margin-top: 7px;
+}
+.mt5 {
+    margin-top: 8px;
+}
+.mt10 {
+    margin-top: 10px;
+}
+.mt20 {
+    margin-top: 20px;
+}
+.mr10x10 {
+    margin: 10px 10px;
+}
+.mt10x10 {
+    margin: 10px 0;
+}
+.mr2 {
+    margin-right: 2px;
+}
+.mr10 {
+    margin-right: 10px;
+}
+.mb0 {
+    margin-bottom:0;
+}
+.mb2 {
+    margin-bottom: 2px;
+}.mb4 {
+    margin-bottom: 4px;
+}.mb6 {
+    margin-bottom: 6px;
+}.mb8 {
+    margin-bottom: 8px;
+}.mb10{
+    margin-bottom: 10px;
+}
+.mb12 {
+    margin-bottom: 12px;
+}
+.mb14 {
+    margin-bottom: 14px;
+}
+.mb17 {
+    margin-bottom: 17px;
+}
+.mb18 {
+    margin-bottom: 18px;
+}
+
+.pd10 {
+    padding: 10px;
+}
+.mg10 {
+    margin: 10px;
+}
+.pr2 {
+    padding-right:2px;
+}
+.pr4 {
+     padding-right:4px;
+
+}
+.pr6 {
+     padding-right:6px;
+
+}
+.pr8 {   
+     padding-right:8px;
+
+}
+.pr10 {  
+      padding-right:10px;
+
+}
+.pl2 {
+    padding-left:2px;
+}
+.pl4 {
+    padding-left:4px;
+}
+.pl6 {
+    padding-left:6px;
+}
+
+.pl8 {
+    padding-left:8px;
+}
+.pl10 {
+    padding-left:10px;
+}
+.pb2 {
+    padding-bottom:2px;
+}
+.pb4 {
+    padding-bottom:4px;
+}
+.pb6 {
+    padding-bottom:6px;
+}
+
+.pb8 {
+    padding-bottom:8px;
+}
+.pb10 {
+    padding-bottom:10px;
+}
+.pt2 {
+    padding-top:2px;
+}
+.pt4 {
+    padding-top:4px;
+}
+.pt6 {
+    padding-top:6px;
+}
+
+.pt8 {
+    padding-top:8px;
+}
+.pt10 {
+    padding-top:10px;
+}
+.maut
+o {
+    margin: 0 auto;
+}
+.nolink a {
+    text-decoration: none;
+}
+.pt6 {
+    padding-top:6px;
+}
+
+/*container css*/
+
+.container {
+    background-color:white;
+}
+
+
+/*top header css*/
+.header-top {
+    padding:0;
+    width:100%;
+    color:#606060;
+    border-bottom: 1px solid #2a2c2b;
+    background-color:#374140;  
+}
+.fontheader {
+    color:white;
+    padding-top:5px;
+    margin-right:300px;
+}
+.hf a 
+{
+    font-family: 'B Titr';
+    font-size: 16px;
+    color:#c22121;
+}
+.justify {
+    font-family:'B Mitra';
+    font-size: 15px;
+    color:black;
+    text-decoration:none;
+}
+ .justify a {
+        color:black;
+        text-decoration:none;
+    }
+ .justify a:hover {
+        color:black;
+    }
+
+    .header-top i.fa-envelope, .header-top li, .header-top li a {
+        color:#a2a2a2;
+    }
+ul.top-info {
+    padding:4px 0;
+    font-style:normal;
+    line-height:25px;
+}
+ul.top-info, i.fa-phone {
+    font-size:15px;
+    padding-right:7px;
+}
+ul.top-social {
+    
+    margin: auto;
+    float:none;
+    text-align:center;
+ 
+    
+}
+    ul.top-social li {
+        text-align:center;
+        padding:0;
+        float:left;
+    }
+        ul.top-social li a {
+            padding:0;
+        }
+i.fa-twitter,
+i.fa-facebook,
+i.fa-google-plus,
+i.fa-skype {
+    transition:color 300ms;
+    -webkit-transition:color 300ms;
+    -ms-transition:color 300ms;
+    -moz-transition:color 300ms;
+    -o-transition:color 300ms;
+}
+.header-top i.fa-twitter:hover {
+    background:#63cdf1;
+    color:#fff;
+}
+.header-top i.fa-facebook:hover {
+    background:#507cbe;
+    color:#fff;
+}
+.header-top i.fa-skype:hover {
+    background:#63cdf1;
+    color:#fff;
+}
+.header-top i.fa-google-plus:hover {
+    background:#f16261;
+    color:#fff;
+}
+ul.top-social li a i {
+    font-size:12px;
+    height:35px;
+    width:30px;
+    text-align:center;
+    line-height:35px;
+    border-left:1px solid #2a2c2b;
+}
+ul.top-social li:last-child a i{
+    border-right:1px solid #2a2c2b;
+    
+}
+/*===================================modal*/
+.modal-body {
+  background-color: #c22121;
+  color:white;
+}
+.modal1 {
+    width:auto;
+    height:40px;
+}
+.modal-title {
+    padding-top:22px;
+}
+.title {
+    color:#374140;
+    float:right; 
+}
+.button1 {
+    color:white;
+}
+
+
+/*====================================header*/
+.header {
+    width:100%;
+    height:100px;
+background-color:white;
+}
+.header1 {
+    width:100%;
+    height:100px;
+
+    position:absolute;
+}
+.logo img {
+    width:200px;
+    height:200px;
+    position:relative;
+text-align:center; 
+      bottom:0px;
+    padding:0px;
+    outline:0px;
+}
+
+
+.logo1 {
+    font-size:17px;
+    color:white;
+    padding-left:15px;
+}
+.head {
+    margin-right:80px;
+        padding-top:10px;
+     font-family:'Adobe Arabic';
+     font-weight:bold;
+    padding-right:40px;
+    color:red;
+    font-size:40px;
+}
+.head1 {
+        margin-right:80px;
+    font-size:20px;
+    padding-right:40px;
+    color:red;
+    font-family:'B Yekan'; 
+}
+
+/*=================================navbar css*/
+.input-group {
+	margin-bottom: 4px;
+}
+
+.btn {
+	transition: border-color .5s, background .5s;
+}
+
+.btn,
+.btn:hover {
+	border-color: transparent;
+}
+
+.center {
+	text-align: center;
+}
+
+/* Default navigation bar */
+
+
+.navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
+.navbar {min-height:40px !important}
+
+.navbar-default,
+.navbar-default .dropdown-menu {
+	background: #374140;
+    font-family:'B Yekan';
+}
+
+.navbar-default .navbar-right .dropdown-menu{
+	background: #E4E4E8;
+}
+
+.navbar-default .navbar-brand {
+	font-family: 'Oleo Script Swash Caps', cursive;
+	color: #FFFFFF;
+	transition: color .5s;
+    float:left;
+    background-color:#707070 ;
+}
+    .navbar-default .navbar-header .omid {
+        float:left;
+    }
+
+.navbar-default .navbar-brand:hover {
+	color: #E0E0E0;
+}
+
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-nav .dropdown-menu>li>a,
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+	color: #FFFFFF;
+	transition: background .25s, color .5s;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+	color: #E0E0E0;
+    background:#707070 ;
+
+}
+
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.open>a {
+	color: #FFFFFF;
+	background: #5c832f ;
+	transition: background .5s;
+}
+
+.navbar-default .navbar-nav>.active>a:hover, 
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav .dropdown-menu>li>a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav .dropdown-menu>li>a:focus,
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+	color: #FFFFFF;
+	background: #707070 ;
+}
+
+.navbar-default .dropdown-header,
+.navbar-default .navbar-nav .dropdown-menu>.disabled>a,
+.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a,
+.navbar-default .navbar-nav .dropdown-menu>.disabled>a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:hover {
+	color: #E0E0E0;
+}
+
+.navbar-default .divider {
+	background-color: #E0E0E0;
+}
+
+.navbar-default .btn {
+	border-color: red;
+	background: #c22121;
+	color: #FFFFFF;
+}
+
+.navbar-default .btn:hover {
+	border-color: #00D9C0;
+	background: #00D9C0;
+	color: #FFFFFF;
+}
+
+.navbar-default .btn:focus {
+	box-shadow: none;
+	outline: none;
+	border-color: #00B599;
+	background: #00B599;
+	color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav>.dropdown a .caret,
+.navbar-default .navbar-nav>.open>a .caret {
+	border-top-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+	transition: border-color .5s;
+}
+
+.navbar-default .navbar-nav>.dropdown>a:hover .caret,
+.navbar-default .navbar-nav>.dropdown>a:focus .caret {
+	border-top-color: #E0E0E0;
+	border-bottom-color: #E0E0E0;
+}
+
+.navbar-default .navbar-nav>.open>a:hover .caret,
+.navbar-default .navbar-nav>.open>a:focus .caret {
+	border-top-color: #FFFFFF;
+	border-bottom-color: #FFFFFF;
+}
+
+.navbar-default .badge{
+	border-radius: 4px;
+	background: #00B599;
+}
+
+.navbar-default .input-group-addon {
+	background: #FFFFFF;
+	color: #00CFAF;
+}
+
+.navbar-default .form-control:focus {
+	border: 1px solid #00CFAF;
+	box-shadow: none;
+}
+        
+
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:hover, 
+.navbar-default .navbar-toggle:focus {
+	outline: none;
+	background-color:#c22121;
+	border-color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-collapse {
+	border-color: #E0E0E0;
+}
+@media (max-width: 767px){
+	.dropdown-submenu .dropdown-menu, 
+	.dropdown-submenu:hover .dropdown-menu {
+		display: block;
+		position: static;
+		padding: 5px 25px;
+	}
+
+	.navbar-form {
+		margin: auto;
+	}
+}
+@media only screen and (max-width: 767px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 6px;
+    }
+
+    ul.top-social {
+        display: block;
+        margin: auto;
+        float: none;
+        text-align: center;
+
+    }
+
+        ul.top-social li {
+            text-align: center;
+            float: none;
+        }
+
+            ul.top-social li a i {
+                font-size: 12px;
+                height: 35px;
+                width: 30px;
+                text-align: center;
+                line-height: 35px;
+                /*border-right:1px solid #2a2c2b;*/
+                /*border-left:1px solid #2a2c2b;*/
+            }
+
+            ul.top-social li:last-child a i {
+                /*border-right:1px solid #2a2c2b;*/
+            }
+
+    .omido {
+        text-align: center;
+        float: none;
+    } 
+}
+
+/*carsoul*/
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.carousel-caption {
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 0 25px 10px 0;
+  color: #fff;
+  text-align: right;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 15;
+  margin: 0;
+  padding: 0 0 80px 80px;
+}
+
+
+
+
+
+
+
+
+
+
+.newst {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    height: 30px;
+    background-color: #c22121;
+   -webkit-border-radius: 80px;
+-webkit-border-top-left-radius: 30px;
+-webkit-border-bottom-left-radius: 30px;
+-moz-border-radius: 80px;
+-moz-border-radius-topleft: 30px;
+-moz-border-radius-bottomleft: 30px;
+border-radius: 80px;
+border-top-left-radius: 30px;
+border-bottom-left-radius: 30px;
+    margin-top:10px;
+    color:white;
+    font-family:'B Yekan';
+}
+.pic {
+    width:30px;
+    height:30px;
+    margin-right:0px;
+}
+.fontheader {
+    color:white;
+    margin-right:0px;
+   padding-bottom:20px;
+
+}
+/***** Wrapping Ribbons *****/
+
+.wrap-ribbon {
+	position: absolute;
+	z-index: 0;
+	text-align: center;
+	color: #fff;
+	behavior: url(PIE.htc);
+}
+
+.wrap-ribbon > span {
+	display: block;
+	height: 100%;
+	position: relative;
+	behavior: url(PIE.htc);
+	-pie-watch-ancestors: 1;
+}
+
+.wrap-ribbon > span:before, .wrap-ribbon > span:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+}
+
+.wrap-ribbon:before, .wrap-ribbon:after {
+	content: '';
+	position: absolute;
+	z-index: -2;
+}
+
+.group.corner {
+	height: 150px;
+	position: relative;
+}
+
+.group.edge {
+	height: 80px;
+	position: relative;
+}
+/****** Right edge wrap with pointed end ******/
+
+.right-edge.point {
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	top: 20px;  /* For the demo only, change accordingly */
+	right: -5px;
+	-moz-box-shadow:    0 1px 2px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+	box-shadow:         0 1px 2px rgba(0, 0, 0, 0.5);
+	-moz-border-radius:    0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	border-radius:         0 5px 0 0;
+}
+
+.ie8 .right-edge.point {
+	right: 0;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.right-edge.point > span {
+	-moz-border-radius:    0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	border-radius:         0 5px 0 0;
+}
+
+.ie .right-edge.point > span {
+	-pie-background: none;
+}
+
+.right-edge.point:before {
+	border-style: solid;
+	border-width: 4px;
+	border-color: transparent;
+	bottom: -5px;
+	right: 0;
+	-moz-transform:    rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-o-transform:      rotate(45deg);
+	-ms-transform:     rotate(45deg);
+	transform:         rotate(45deg);
+	-moz-border-radius:    5px;
+	-webkit-border-radius: 5px;
+	border-radius:         5px;
+}
+
+.right-edge.point:after {
+	width: 28px;
+	height: 28px;
+	left: -14px;
+	top: 50%;
+	margin-top: -14px;
+	-moz-transform-origin:    center center; -moz-transform:    rotate(45deg);
+	-webkit-transform-origin: center center; -webkit-transform: rotate(45deg);
+	-o-transform-origin:      center center; -o-transform:      rotate(45deg);
+	-ms-transform-origin:     center center; -ms-transform:     rotate(45deg);
+	transform-origin:         center center; transform:         rotate(45deg);
+	-moz-box-shadow:    1px 1px 2px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	box-shadow:         1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.ie8 .right-edge.point:before, .ie8 .right-edge.point:after {
+	display: none;
+	border-radius: 0;
+}
+
+/****** Light Red ******/
+
+.ie8 .lred, .lred > span, .lred.left-corner > span:before, .lred.left-corner > span:after, .lred.right-corner > span, .lred.right-corner > span:before, .lred.right-corner > span:after {
+	background-color: #f80000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f80000), to(#a30000)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, #f80000, #a30000); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(top, #f80000, #a30000); /* FF3.6 */
+	background-image:     -ms-linear-gradient(top, #f80000, #a30000); /* IE10 */
+	background-image:      -o-linear-gradient(top, #f80000, #a30000); /* Opera 11.10+ */
+	background-image:         linear-gradient(to bottom, #f80000, #a30000);
+}
+
+.lred.left-corner.strip > span, .lred.left-corner.strip > span:before, .lred.left-corner.strip > span:after, .lred.right-corner.strip > span, .lred.right-corner.strip > span:before, .lred.right-corner.strip > span:after {
+	background-color: #f80000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f80000), to(#a30000)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px), -webkit-linear-gradient(left, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px), -webkit-linear-gradient(top, #f80000, #a30000); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(left, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px),    -moz-linear-gradient(left, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px),    -moz-linear-gradient(top, #f80000, #a30000); /* FF3.6 */
+	background-image:     -ms-linear-gradient(left, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px),     -ms-linear-gradient(left, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px),     -ms-linear-gradient(top, #f80000, #a30000); /* IE10 */
+	background-image:      -o-linear-gradient(left, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px),      -o-linear-gradient(left, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px),      -o-linear-gradient(top, #f80000, #a30000); /* Opera 11.10+ */
+	background-image:         linear-gradient(to right, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px),         linear-gradient(to right, rgba(255, 255, 255, 0.7) 0, rgba(255, 255, 255, 0.7) 10px),         linear-gradient(to bottom, #f80000, #a30000);
+}
+
+
+.lred.left-corner:before {
+	border-left-color: #5f0000;
+	border-bottom-color: #5f0000;
+}
+
+.lred.left-corner:after {
+	border-right-color: #5f0000;
+	border-top-color: #5f0000;
+}
+
+.lred.right-corner:before {
+	border-left-color: #5f0000;
+	border-top-color: #5f0000;
+}
+
+.lred.right-corner:after {
+	border-right-color: #5f0000;
+	border-bottom-color: #5f0000;
+}
+
+.lred.left-edge.point:after, .lred.right-edge.point:after {
+	background-color: #f80000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f80000), to(#a30000)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(-45deg, #f80000, #a30000); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(-45deg, #f80000, #a30000); /* FF3.6 */
+	background-image:     -ms-linear-gradient(-45deg, #f80000, #a30000); /* IE10 */
+	background-image:      -o-linear-gradient(-45deg, #f80000, #a30000); /* Opera 11.10+ */
+	background-image:         linear-gradient(135deg, #f80000, #a30000);
+}
+
+.lred.left-edge:before {
+	border-left-color: #5f0000;
+	border-top-color: #5f0000;
+}
+
+.lred.right-edge:before {
+	border-right-color: #5f0000;
+	border-top-color: #5f0000;
+}
+
+
+/* Stitch Effect on pointed ribbon */
+
+.lred.left-edge.point.stitch > span {
+	background-color: #f80000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f80000), to(#a30000)); /* Saf4+, Chrome */
+
+	background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(top, #f80000, #a30000); /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+	background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(top, #f80000, #a30000); /* FF3.6 */
+
+	background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(top, #f80000, #a30000); /* IE10 */
+
+	background-image: -o-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(top, #f80000, #a30000); /* Opera 11.10+ */
+
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to bottom, #f80000, #a30000);
+}
+
+.lred.right-edge.point.stitch > span {
+	background-color: #f80000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f80000), to(#a30000)); /* Saf4+, Chrome */
+
+	background-image: -webkit-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(top, #f80000, #a30000); /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+	background-image: -moz-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(top, #f80000, #a30000); /* FF3.6 */
+
+	background-image: -ms-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(top, #f80000, #a30000); /* IE10 */
+
+	background-image: -o-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(top, #f80000, #a30000); /* Opera 11.10+ */
+
+	background-image: linear-gradient(to left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to bottom, #f80000, #a30000);
+}
+
+
+.lred.left-edge.fork > span {
+	background-color: #f80000;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f80000), color-stop(5px, #f80000), color-stop(15%, #a30000), color-stop(65%, #a30000), color-stop(100%, #f80000)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* FF3.6 */
+	background-image:     -ms-linear-gradient(left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* IE10 */
+	background-image:      -o-linear-gradient(left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* Opera 11.10+ */
+	background-image:         linear-gradient(to right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%);
+	-pie-background:          linear-gradient(left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* IE6-IE9 */
+}
+
+.ie8 .lred.left-edge.fork > span {
+	-pie-background: none;
+}
+
+.lred.left-edge.fork > span:after {
+	border-color: #f80000 transparent #f80000 #f80000;
+}
+
+.lred.left-edge.fork > span:before {
+	border-left-color: #5f0000;
+	border-top-color: #5f0000;
+}
+
+.lred.right-edge.fork > span {
+	background-color: #f80000;
+	background-image: -webkit-gradient(linear, right top, left top, color-stop(0, #f80000), color-stop(5px, #f80000), color-stop(15%, #a30000), color-stop(65%, #a30000), color-stop(100%, #f80000)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image:    -moz-linear-gradient(right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* FF3.6 */
+	background-image:     -ms-linear-gradient(right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* IE10 */
+	background-image:      -o-linear-gradient(right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* Opera 11.10+ */
+	background-image:         linear-gradient(to left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%);
+	-pie-background:          linear-gradient(right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* IE6-IE9 */
+}
+
+.ie8 .lred.right-edge.fork > span {
+	-pie-background: none;
+}
+
+.lred.right-edge.fork > span:after {
+	border-color: #f80000 #f80000 #f80000 transparent;
+}
+
+.lred.right-edge.fork > span:before {
+	border-right-color: #5f0000;
+	border-top-color: #5f0000;
+}
+
+
+
+/* Stitch Effect on forked ribbon */
+
+.lred.left-edge.fork.stitch > span {
+	background-color: #f80000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f80000), to(#a30000)); /* Saf4+, Chrome */
+
+	background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+	background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* FF3.6 */
+
+	background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* IE10 */
+
+	background-image: -o-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* Opera 11.10+ */
+
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%);
+}
+
+.lred.right-edge.fork.stitch > span {
+	background-color: #f80000;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f80000), to(#a30000)); /* Saf4+, Chrome */
+
+	background-image: -webkit-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -webkit-linear-gradient(right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* Chrome 10+, Saf5.1+, iOS 5+ */
+
+	background-image: -moz-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -moz-linear-gradient(right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* FF3.6 */
+
+	background-image: -ms-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -ms-linear-gradient(right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* IE10 */
+
+	background-image: -o-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(right, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(right, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  -o-linear-gradient(right, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%); /* Opera 11.10+ */
+
+	background-image: linear-gradient(to left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to left, rgba(255, 255, 255, 0.5) 0, rgba(255, 255, 255, 0.5) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0.3) 6px, transparent 6px, transparent 12px),
+	                  linear-gradient(to left, #f80000 0, #f80000 5px, #a30000 15%, #a30000 65%, #f80000 100%);
+}
+
+
+
+/*===========footer*/
+.footer1 {
+    width:auto;
+    height:50px;
+    border-top:1px solid black;
+    background-color:#374140;
+    text-align:center;
+    color:white;
+    font-size:11px;
+    padding-top:15px;
+    font-family:'B Yekan';
+}
+ /*==========================social media style*/
+
+.so-tw {
+    padding:5px;
+   
+    
+}
+.so-sk {
+    padding:5px 6px;
+    
+
+
+}
+.so-li {
+    padding:5px 6px;
+   
+  
+}
+.so-fa{
+    padding:5px 8px;
+  
+    
+
+}
+.so-tw:hover {
+    background-color:#00aced;
+    padding:5px;
+    border-radius:100%;
+    color:white;
+}
+.so-sk:hover {
+    background-color: #007bb6;
+    padding:5px;
+    border-radius:100%;
+    color:white;
+}
+.so-li:hover {
+    background-color:#007bb6;
+    padding:5px;
+    border-radius:100%;
+    color:white;
+}
+.so-fa:hover {
+    background-color: #3b5998;
+    border-radius:30px;
+    color:white;
+}
+.social-media li {
+    width:20px;
+    height:20px;
+    list-style:none;
+    float:left;
+    margin-right:5px;
+}
+    .social-media  li a {
+    color:gray;
+    
+    }
+.social-media {
+    margin-left:20px;
+    font-size:16px;
+
+}
+@media(min-width: 992px){
+    #home-page-carousel .item > img {
+        height:300px;
+    }
+}

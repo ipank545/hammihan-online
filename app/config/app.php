@@ -127,12 +127,15 @@ return array(
         'Laracasts\Commander\CommanderServiceProvider',
         'Laracasts\Validation\ValidationServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
 
          //Pardisan Service Providers
         'Pardisan\ServiceProviders\SettingsServiceProvider',
         'Pardisan\ServiceProviders\RepositoryServiceProvider',
         'Pardisan\ServiceProviders\ArtisanCommandsServiceProvider',
-        'Pardisan\ServiceProviders\ValidationServiceProvider'
+        'Pardisan\ServiceProviders\ValidationServiceProvider',
+        'Pardisan\ServiceProviders\AccessControlServiceProvider',
+
 	),
 
 	/*
@@ -203,6 +206,7 @@ return array(
          //Package facades
         'Debugbar'        => 'Barryvdh\Debugbar\Facade',
         'Entrust'         => 'Zizaco\Entrust\EntrustFacade',
+        'Image'           => 'Intervention\Image\Facades\Image',
 
         //Pardisan Facades
         'Menu'            => 'Pardisan\Support\Facades\Menu'
@@ -210,7 +214,6 @@ return array(
 	),
 
     'available_languages'   =>  [
-        'en',
         'fa'
     ]
 

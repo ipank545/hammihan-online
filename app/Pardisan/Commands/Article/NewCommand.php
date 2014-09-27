@@ -8,10 +8,15 @@ class NewCommand {
     public $summary;
     public $body;
     public $publish_date;
-    public $status_id;
+    public $state_id;
     public $author;
     public $user_id;
     public $category;
+    public $tags;
+    public $large_image;
+    public $thumb_image;
+    public $commentable;
+    public $highlighted;
 
 
     public function __construct(
@@ -21,10 +26,15 @@ class NewCommand {
         $summary,
         $body,
         $publish_date,
-        $status_id = null,
+        $state_id = null,
         $author,
         $user_id,
-        $category_id = null
+        $category_id = null,
+        $tags,
+        $thumb_image,
+        $large_image,
+        $commentable = null,
+        $highlighted = null
     ){
         $this->first_title = $first_title;
         $this->second_title = $second_title;
@@ -32,11 +42,16 @@ class NewCommand {
         $this->summary = $summary;
         $this->body = $body;
         $this->publish_date = $publish_date;
-        $this->status_id = $status_id;
+        $this->state_id = $state_id;
         $this->author = $author;
         $this->user_id = $user_id;
         $this->category_id = $category_id;
-
+        $this->thumb_image = $thumb_image;
+        $this->large_image = $large_image;
+        $this->category_id = $category_id;
+        $this->tags = $tags;
+        $this->highlighted = (boolean) $highlighted;
+        $this->commentable = (boolean) $commentable;
     }
 
 

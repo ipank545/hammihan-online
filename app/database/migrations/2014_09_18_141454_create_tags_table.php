@@ -14,7 +14,7 @@ class CreateTagsTable extends Migration {
 	{
         Schema::create('tags',function($t) {
             $t->bigIncrements('id');
-            $t->string('title')->nulllable();
+            $t->string('name')->nulllable();
             $t->string('slug')->index();
         });
 

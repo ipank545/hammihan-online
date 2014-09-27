@@ -29,20 +29,28 @@ class UpdateArticleStateCommand
     public $id;
 
     /**
+     * @var bool
+     */
+    public $viewable;
+
+    /**
      * @param $machine_name
      * @param $display_name
      * @param $priority
      * @param $id
+     * @param null $viewable
      */
     public function __construct(
         $machine_name,
         $display_name,
         $priority,
-        $id
+        $id,
+        $viewable = null
     ){
         $this->machine_name = $machine_name;
         $this->display_name = $display_name;
         $this->priority = $priority;
         $this->id = $id;
+        $this->viewable = (boolean) $viewable;
     }
 } 

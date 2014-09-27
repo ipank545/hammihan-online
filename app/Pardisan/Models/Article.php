@@ -1,5 +1,6 @@
 <?php namespace Pardisan\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Pardisan\Support\Date\PersianDateTrait;
 
@@ -9,6 +10,24 @@ class Article extends Model {
      * Adding persian date to eloquent data sets
      */
     use PersianDateTrait;
+
+    public static $homePageCats = [
+        "news"              =>  'خبرگزاری',
+        "talk"              =>  'گفتمان',
+        "departmentOfFix"   =>  'پارلمان اصلاحات',
+        "tribon"            =>  'تریبون',
+        "guideline"         =>  'راهبرد',
+        "brainRoom"         =>  'اتاق فکر',
+        "meeting"           =>  'دیدار',
+        "club"              =>  'باشگاه',
+        "calendar"          =>  'تقویم',
+        "cafe"              =>  'کافه',
+        "network"           =>  'شبکه',
+        "echo"              =>  'پژواک',
+        "worldGroups"       =>  'احزاب ایران و جهان',
+        "bazaar"            =>  'بازار',
+        "counter"           =>  'پیشخوان'
+    ];
 
     /**
      * @var string
@@ -22,14 +41,7 @@ class Article extends Model {
      * @TODO Convert this to guarded
      * @var array
      */
-    protected $fillable = [
-        'first_title',      'second_title',
-        'important_title',  'summary',
-        'body',             'publish_date',
-        'status_id',        'author',
-        'slug_url'
-    ];
-
+    protected $guarded = ['id'];
     /**
      * Fields to treat them as carbon objects
      *
@@ -77,6 +89,24 @@ class Article extends Model {
      */
     public function comments()
     {
-        return $this->morphMany('Pardisan\Models\Comment', 'commentable');
+        return $this->morphToMany('Pardisan\Models\Comment', 'commentable');
     }
+
+    public function tags()
+    {
+        return $this->morphToMany('Pardisan\Models\Tag','taggable');
+    }
+
+    public function scopeGetGuestSafeQuery($q)
+    {
+        return $q->whereHas('states', function($q){
+            $q->orderBy('states.id', 'DESC')->where('viewable', true)->limit(1);
+        });
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('Pardisan\Models\Category', 'category_id');
+    }
+
 } 

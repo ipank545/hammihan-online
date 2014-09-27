@@ -68,15 +68,39 @@
 
     <div class="form-group">
 
-        {{ Form::label('category', 'انتخاب دسته بندی') }}
-        @foreach($categories as $category)
+        {{ Form::label('category_id', 'انتخاب دسته بندی') }}
+
+        @if(! $categories->isEmpty())
+            @foreach($categories as $category)
+                <div class="radio">
+                    <label>
+                        {{ $category->name }}
+                        {{ Form::radio('category_id', $category->id, false) }}
+                    </label>
+                </div>
+            @endforeach
+        @else
+            <div class="alert alert-danger"><p>شما به دسته بندی خاصی دسترسی ندارید</p></div>
+        @endif
+
+    </div>
+
+    <div class="form-group">
+
+        {{ Form::label('state_id', 'وضعیت انتشار') }}
+
+        @if(! $states->isEmpty())
+        @foreach($states as $state)
             <div class="radio">
                 <label>
-                    {{ $category->name }}
-                    {{ Form::radio('category_id', $category->id, false) }}
+                    {{ $state->display_name }}
+                    {{ Form::radio('state_id', $state->id, $state->priority == 0 ? true : false) }}
                 </label>
             </div>
         @endforeach
+        @else
+            <div class="alert alert-danger">شما به هیج وضعیت انتشاری دسترسی ندارید.</div>
+        @endif
 
     </div>
 
@@ -105,7 +129,7 @@
                                 انتخاب کنید
                 </a>
             </div>
-            {{ Form::text('publish_date', null, ['class' => 'form-control languageLeft', 'id' => 'publish_date_input']) }}
+            {{ Form::text('publish_date', isset($article) ? $article->jalali_created_at : null, ['class' => 'form-control languageLeft', 'id' => 'publish_date_input']) }}
         </div>
 
     </div>
@@ -113,8 +137,17 @@
     <div class="form-group">
         <div class="checkbox">
             <label>
-                {{ Form::checkbox('commentable', true, true) }}
+                {{ Form::checkbox('commentable', true, isset($article) ? $article->commentable : true) }}
                 فعال بودن نظرها
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                {{ Form::checkbox('highlighted', true, isset($article) ? $article->highlighted : false) }}
+                استفاده به عنوان نصویر بخش نگاه
             </label>
         </div>
     </div>

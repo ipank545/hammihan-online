@@ -25,7 +25,8 @@
         "way/laravel-test-helpers": "dev-master",
         "mockery/mockery": "*",
         "barryvdh/laravel-debugbar": "1.*",
-        "barryvdh/laravel-ide-helper": "1.*"
+        "barryvdh/laravel-ide-helper": "1.*",
+        "phploc/phploc": "*"
     },
 	"autoload": {
 		"classmap": [

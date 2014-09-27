@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Translation\Translator;
 use Laracasts\Validation\FormValidationException;
+use Pardisan\Commands\Category\Exceptions\DeleteDeniedException;
 use Pardisan\Repositories\CategoryRepositoryInterface;
 use Pardisan\Repositories\Exceptions\NotFoundException;
 use Pardisan\Repositories\Exceptions\RepositoryException;
@@ -90,7 +91,11 @@ class CategoryController extends BaseController
      */
     public function destroy($id)
     {
-        return $this->generalDestroy($id, 'Pardisan\Commands\Category\Delete\Command');
+        try {
+            return $this->generalDestroy($id, 'Pardisan\Commands\Category\Delete\BulkCommand');
+        }catch (DeleteDeniedException $e){
+            return $this->redirectBack()->with('error_message', $this->lang->get($e->getLangKey()));
+        }
     }
 
     /**

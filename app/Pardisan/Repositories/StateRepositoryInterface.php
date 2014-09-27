@@ -1,7 +1,9 @@
 <?php namespace Pardisan\Repositories;
 
+use Pardisan\Models\Article;
 use Pardisan\Models\Role;
 use Pardisan\Models\State;
+use Pardisan\Models\User;
 
 interface StateRepositoryInterface {
     /**
@@ -16,4 +18,8 @@ interface StateRepositoryInterface {
     public function getAllWithRoles();
 
     public function addStatesToRole(Role $role, array $insertables);
+
+    public function addStateToArticle(Article $article, $state_id, $last = true, $user_id = null);
+
+    public function loadUserAvailableStates(User $user);
 } 

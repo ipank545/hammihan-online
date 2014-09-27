@@ -13,6 +13,7 @@
 
 Route::when('admin/*', 'csrf', ['post']);
 Route::pattern('id','[0-9]+');
+Route::pattern('image', '([^\s]+(\.(?i)(jpg|png|gif|bmp|jpeg|tiff))$)');
 
 Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(){
     Route::group(['before' => 'auth'], function(){
@@ -65,6 +66,8 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
         Route::delete('articles/{id}',                      ['uses' => 'ArticleController@destroy',                                         'as' => 'admin.articles.destroy']);
         Route::get('role_states',                           ['uses' => 'StateController@getRoleStates',                                     'as' => 'admin.states.edit_role_states']);
         Route::put('role_states',                           ['uses' => 'StateController@putRoleStates',                                     'as' => 'admin.states.update_role_states']);
+        Route::get('tags',                                  ['uses' => 'TagController@index',                                               'as' => 'admin.tags.index']);
+        Route::put('tags/{id}',                             ['uses' => 'TagController@update']);
     });
     Route::group(['before' => 'guest'], function(){
         Route::post('/login',                               ['uses' => 'AuthController@postLogin',                                          'as' => 'admin.auth.post_login']);
@@ -75,6 +78,8 @@ Route::group(['namespace' => 'Controllers\Admin', 'prefix' => 'admin'],function(
 Route::group(['namespace' => 'Controllers'],function(){
     Route::get('cats/{id}',                                 ['uses' => 'CategoryController@show',                                           'as' => 'categories.show']);
     Route::get('articles/{id}',                             ['uses' => 'ArticleController@show',                                            'as' => 'articles.show']);
+    Route::get('/',                                         ['uses' => 'HomeController@index',                                              'as' => 'home']);
+    Route::get('{image}',                                   ['uses' => 'ImageController@handleImage',                                       'images.generator']);
 });
 
 Route::group(['namespace' => 'Controllers\Admin'],function() {

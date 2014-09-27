@@ -44,6 +44,16 @@
 
         </div>
 
+
+        <div class="form-group-lg">
+            <div class="checkbox">
+                <label class="control-label">
+                    خبرهایی که این مرحله، مرحله ی آخر آنها میباشد را به کاربران مهمان نشان بده
+                    {{ Form::checkbox('viewable', true, isset($state) ? $state->viewable : false) }}
+                </label>
+            </div>
+        </div>
+
         <div class="form-group form-group-lg">
 
             @if( isset($state))
@@ -71,7 +81,6 @@
     @parent
     <script type="text/javascript">
         $(".article_states-submit-btn").click(function(e){
-            console.log('salam');
             var messageContainer = $(".form-message-wrapper");
             var formWrapper = $(".form-wrapper");
             var form = $(".ajaxable-form.article_states-form");

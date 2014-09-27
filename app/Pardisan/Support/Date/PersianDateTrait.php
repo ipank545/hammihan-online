@@ -19,7 +19,7 @@ trait PersianDateTrait {
      * @param string $what
      * @param string $format
      */
-    public function convertToPersian($what = 'created_at', $format = 'y/m/d')
+    public function convertToPersian($what = 'created_at', $format = 'Y-m-d H:i:s')
     {
         return jDate::forge($this->$what)->format($format);
     }

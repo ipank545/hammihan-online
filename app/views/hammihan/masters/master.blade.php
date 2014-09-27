@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="rtl" lang="fa">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>{{$title or trans($defaultTitle)}}</title>
-    <link href="css/bootstrap.rtl.css" rel="stylesheet" />
-	<link href="css/bootstrap-theme.css" rel="stylesheet" />
-    <link href="StyleSheet.css" rel="stylesheet" />
-    <link href="css/font-awesome.css" rel="stylesheet" />
-	<link href='http://www.fontonline.ir/css/IranNastaliq.css' rel='stylesheet' type='text/css'>
-	<script src="js/jquery-2.1.1.js"></script>
+	@include('hammihan.sections.metas')
+    @include('hammihan.sections.stylesheets')
+    @include('hammihan.sections.header_scripts')
 </head>
+<body>
+    @include('hammihan.sections.header')
+    @yield('home_content')
+    @yield('article_content')
+    @yield('post_list_content')
+    @yield('about_us_content')
+    @yield('contact_us_content')
+    @include('hammihan.sections.footer')
+    @include('hammihan.sections.scripts')
+</body>
+</html>

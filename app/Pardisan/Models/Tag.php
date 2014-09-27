@@ -17,4 +17,10 @@ class Tag extends Model {
      * @var array
      */
     protected $guarded = ['id'];
+
+    public function articles()
+    {
+        return $this->morphedByMany('Pardisan\Models\Article', 'taggable');
+    }
+
 } 

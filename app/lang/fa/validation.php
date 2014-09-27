@@ -135,6 +135,16 @@ return array(
         'machine_name'  =>  'نام ماشینی',
         'display_name'  =>  'نام',
         'priority'      =>  'این مقدار اولویت',
-        'user_name' => 'نام کاربری'
+        'user_name' => 'نام کاربری',
+        "body"  =>  'متن',
+        'important_title' => 'تیتر اصلی',
+        'first_title'   =>  'تیتر فرعی بالا',
+        'second_title'  =>  'تیتر فرعی پایین',
+        'publish_date'  =>  'تاریخ انتشار',
+        'summary'   =>  'خلاصه',
+        'thumb_image'   =>  'عکس بندانگشتی',
+        'large_image' => 'عکس بزرگ',
+        'category_id' => 'دسته بندی',
+        'state_id' => 'وضعیت انتشار'
     ),
 );

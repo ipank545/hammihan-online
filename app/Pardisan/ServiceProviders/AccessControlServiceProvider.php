@@ -6,7 +6,7 @@ class AccessControlServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->app['access_control']->setUserByAuth();
+        $this->app->make('Pardisan\Support\AccessControl\Contracts\BridgeInterface')->setUserByAuth();
     }
 
     /**
@@ -16,10 +16,11 @@ class AccessControlServiceProvider extends ServiceProvider
      */
     public function register()
     {
+
         $this->app->bindShared(
             'Pardisan\Support\AccessControl\Contracts\AccessControlInterface',
             function($app){
-                $app->make('Pardisan\Support\AccessControl\Implementations\AccessControl');
+                return $app->make('Pardisan\Support\AccessControl\Implementations\AccessControl');
             }
         );
 

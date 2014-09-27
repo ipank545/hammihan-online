@@ -5,6 +5,7 @@ use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Pardisan\Support\Date\PersianDateTrait;
 use Zizaco\Entrust\HasRole;
 
 class User extends Eloquent  implements
@@ -13,7 +14,7 @@ class User extends Eloquent  implements
     UserAclInterface
 {
 
-    use UserTrait, RemindableTrait, HasRole;
+    use UserTrait, RemindableTrait, HasRole, PersianDateTrait;
 
     /**
      * The database table used by the model.
